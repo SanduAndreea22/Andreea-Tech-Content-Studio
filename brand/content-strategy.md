@@ -150,7 +150,7 @@ Cadența e propunere realistă pentru o persoană care lucrează singură și ru
 4. **Ponderile obiectivelor** (35/30/20/15).
 5. **Statutul Platform Tickets și Bookora** (necesar înainte de a le prezenta ca „proiect explicat”).
 6. **Există un client real, cu acord, pentru un studiu de caz?**
-7. **Agentul beauty:** pe ce cont rulează (personal sau Andreea Tech), cum se numește, ce face exact, ce rezultate se pot arăta? Până atunci nu e folosit în postări. Atenție: dacă Instagram-ul de beauty e cont personal separat, nu îl amestecăm cu brandul de servicii.
+7. **Agentul beauty:** rulează pe contul personal `andreea.sandu22` (beauty, română), separat de brandul Andreea Tech. Nu îl amestecăm cu pilonii de servicii; îl folosim doar ca dovadă că un agent configurat în Claude produce conținut real. De decis: ce detalii despre el publicăm (nume, cum funcționează) și dacă Andreea Tech are un cont Instagram propriu, separat.
 8. **Instagram:** contul există? Nu apare pe site, doar LinkedIn. Link-uri sociale în footer: doar LinkedIn.
 
 ## 10. Pasul următor

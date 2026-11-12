@@ -298,8 +298,9 @@ Concordanță cu site-ul **[EXPLICIT]**: „produsele mele proprii: pornite din 
 - **Legătura cu Andreea:** domeniul beauty este o pasiune personală a Andreei.
 - **Denumire:** Nespecificat.
 - **Funcții exacte** (captions, vizualuri, calendar etc.): Nespecificat.
-- **Cont pe care rulează** (personal sau Andreea Tech): Nespecificat.
-- **Rezultate / postări publicate / perioadă:** Nespecificat.
+- **Cont pe care rulează:** contul personal de Instagram `andreea.sandu22` (conținut beauty, în română), conform capturii de ecran furnizate. Nu este contul brandului Andreea Tech.
+- **Ce se vede în captură:** postări vizuale cu titlu-cârlig pe imagine (carusele/reels), subiecte de machiaj și skincare, comparații de produse; mărci menționate: Avant, Merit, Rare Beauty, Dior, Armani, Gosh, Rodial. Vizualizări vizibile pe grilă: aprox. 45–1.122 per postare. Nu se afirmă alte cifre (urmăritori, rezultate).
+- **Legătura cu agentul:** că postările din cont sunt create cu agentul beauty a fost spus de Andreea; captura nu arată procesul. Rezultate dincolo de vizualizările vizibile: Nespecificat.
 - **Eticheta recomandată:** „Instrument propriu”, cu mențiunea „agent configurat în Claude”.
 
 Reguli pentru agenți: nu se descrie ca aplicație, platformă, software sau produs de vânzare; nu se afirmă că e construit în Django sau cu cod; nu se atribuie rezultate; nu se prezintă ca serviciu oferit clienților (nu e pe site). Poate fi folosit ca exemplu că Andreea configurează asistenți AI pentru fluxuri reale de conținut.
