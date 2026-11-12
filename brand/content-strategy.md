@@ -17,7 +17,7 @@ Unghiul consecvent al brandului (din site): *problema rezolvată, nu tehnologia.
 
 | # | Pilon | Mesaj central | Dovada reală pe care o folosește |
 |---|---|---|---|
-| 1 | **Construit, nu promis** | Produsele care rulează bat prezentările care sună bine. | Emotional Planner, MyBudget, SM Writer („nu e un concept, e ceva ce rulează acum”) |
+| 1 | **Construit, nu promis** | Produsele care rulează bat prezentările care sună bine. | Emotional Planner, MyBudget, SM Writer („nu e un concept, e ceva ce rulează acum”) și agentul AI pentru conținut beauty (agent configurat în Claude, fără cod; separat de SM Writer; detalii de confirmat) |
 | 2 | **Timpul pierdut pe sarcini repetitive** | Programările, confirmările și mesajele care se repetă se pot automatiza. | Calculatorul „Cât te costă programările la care clientul nu mai vine?”, demo-ul de confirmare, Bookora, serviciul Automatizare AI |
 | 3 | **Anatomia unui sistem** | Cum funcționează în spate un sistem de rezervări, plăți, inventar sau bilete. | Al Noir (demo), Platform Tickets, Bookora |
 | 4 | **Preț fix și proces transparent** | Știi cât costă și când e gata, înainte să începem. | Prețuri „de la” €150/€250/€850, 7/14/21 zile, 5 pași, 7 zile ajustări, „ce influențează prețul” |
@@ -150,7 +150,8 @@ Cadența e propunere realistă pentru o persoană care lucrează singură și ru
 4. **Ponderile obiectivelor** (35/30/20/15).
 5. **Statutul Platform Tickets și Bookora** (necesar înainte de a le prezenta ca „proiect explicat”).
 6. **Există un client real, cu acord, pentru un studiu de caz?**
-7. **Instagram:** contul există? Nu apare pe site, doar LinkedIn. Link-uri sociale în footer: doar LinkedIn.
+7. **Agentul beauty:** pe ce cont rulează (personal sau Andreea Tech), cum se numește, ce face exact, ce rezultate se pot arăta? Până atunci nu e folosit în postări. Atenție: dacă Instagram-ul de beauty e cont personal separat, nu îl amestecăm cu brandul de servicii.
+8. **Instagram:** contul există? Nu apare pe site, doar LinkedIn. Link-uri sociale în footer: doar LinkedIn.
 
 ## 10. Pasul următor
 

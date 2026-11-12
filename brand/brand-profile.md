@@ -291,6 +291,19 @@ Concordanță cu site-ul **[EXPLICIT]**: „produsele mele proprii: pornite din 
 ### 19.2 Instrument propriu
 **SM Writer (Social Media Writer)** — asistent AI intern care scrie zilnic postările de social media ale Andreei; descris ca ceva care „rulează acum”. **[EXPLICIT, About]**
 
+### 19.2b Agent AI pentru conținut beauty (Instagram) — furnizat de Andreea
+*Sursă: informație dată direct de Andreea; **nu apare pe website**, neverificat.*
+
+- **Ce este:** agent AI configurat în Claude, fără cod propriu, care scrie și creează postări despre beauty pentru Instagram. Este separat de SM Writer.
+- **Legătura cu Andreea:** domeniul beauty este o pasiune personală a Andreei.
+- **Denumire:** Nespecificat.
+- **Funcții exacte** (captions, vizualuri, calendar etc.): Nespecificat.
+- **Cont pe care rulează** (personal sau Andreea Tech): Nespecificat.
+- **Rezultate / postări publicate / perioadă:** Nespecificat.
+- **Eticheta recomandată:** „Instrument propriu”, cu mențiunea „agent configurat în Claude”.
+
+Reguli pentru agenți: nu se descrie ca aplicație, platformă, software sau produs de vânzare; nu se afirmă că e construit în Django sau cu cod; nu se atribuie rezultate; nu se prezintă ca serviciu oferit clienților (nu e pe site). Poate fi folosit ca exemplu că Andreea configurează asistenți AI pentru fluxuri reale de conținut.
+
 ### 19.3 Portofoliu (proiecte pentru servicii)
 Portofoliul se încarcă dintr-o bază de date; **lista concretă nu e în sursa analizată.** Regula de etichetare **[EXPLICIT]**:
 - **Demo funcțional** — „Sistem complet construit de mine, ca exemplu.”
@@ -398,6 +411,7 @@ Puncte tari **vizibile în materialul existent** **[INTERPRETARE, cu temei expli
 
 - Compararea textelor cu versiunea publicată.
 - Etichetele de statut pentru Platform Tickets și Bookora și lista completă a proiectelor din portofoliu (Al Noir, Platform Tickets, Bookora sunt furnizate de Andreea, neverificate pe live).
+- Agentul beauty pentru Instagram: denumire, funcții, cont, rezultate; prezența lui pe site.
 - Furnizorii și datele certificărilor UI/UX Design și Claude 101.
 - Recenziile aprobate, dacă există.
 - Textul de disponibilitate, dacă e activat.
