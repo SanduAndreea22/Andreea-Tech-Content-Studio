@@ -4,7 +4,8 @@ Echipă de agenți AI pentru conținutul Andreea Tech, rulată direct în Claude
 
 ## Structură
 - `brand/brand-brief.md` — sursa de adevăr a brandului (citită de toți agenții)
-- `.claude/agents/` — agenții
+- `.claude/agents/` — definițiile agenților
+- `agents/` — fișa fiecărui agent
 
 ## Echipa
 | # | Agent | Stare |
