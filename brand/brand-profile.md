@@ -300,9 +300,31 @@ Portofoliul se încarcă dintr-o bază de date; **lista concretă nu e în sursa
 - Filtre: Web & produse digitale / Automatizare AI / Design creativ.
 - FAQ: portofoliul = „exemple din ce pot construi… Nu sunt produse de vânzare.”
 
-**Proiecte menționate de Andreea în afara site-ului (Al Noir, Bookora, Platform Tickets):** numele nu apar în codul sursă analizat; titlul, eticheta și descrierea lor pe site sunt **nespecificate aici**. Până la confirmarea din panoul live, agenții **nu** trebuie să le prezinte ca proiecte comerciale pentru clienți; din formularea utilizatorului, Al Noir este demo.
+**Proiecte din portofoliu — furnizate de Andreea** *(nu au putut fi verificate pe site-ul live; titlurile și descrierile nu apar în codul sursă, ci în baza de date a site-ului)*:
+
+| Proiect | Descriere | Funcționalități | Tehnologii | Eticheta de statut |
+|---|---|---|---|---|
+| **Al Noir — Restaurant Management System** | Platformă de management pentru restaurante | Rezervări, plăți, inventar, evidență financiară | Django, PostgreSQL, Stripe | **Demo funcțional** |
+| **Platform Tickets — Event Ticketing System** | Platformă de vânzare bilete pentru evenimente | Plăți online, bilete PDF cu cod QR, protecție împotriva suprapunerilor de rezervare | Nespecificat | Nespecificat |
+| **Bookora** | Aplicație de programări online pentru afaceri mici | Clienții rezervă singuri intervalele disponibile | Nespecificat | Nespecificat |
+
+Reguli pentru agenți:
+- Doar **Al Noir** are statutul confirmat („Demo funcțional”). Pentru Platform Tickets și Bookora, eticheta (demo / produs propriu / instrument propriu / concept) **nu a fost specificată**; până la confirmare, se descriu neutru („proiect din portofoliu”), fără a le declara proiecte livrate unui client.
+- Nu se atribuie niciunui proiect clienți, rezultate, cifre sau perioade de construcție: nu sunt furnizate.
+- Tehnologiile se citează numai așa cum sunt listate (Al Noir: Django, PostgreSQL, Stripe).
+- Direcția (Web / AI / Creativ) a fiecărui proiect: nespecificată; [INTERPRETARE] toate trei sunt de tip web/produs digital.
 
 **Rezultate de client / mărturii:** Nespecificat în sursa analizată (există mecanism de recenzii, conținutul nu e vizibil). Câmpul „rezultat cuantificat” al unui proiect e opțional și se lasă gol „dacă nu ai o cifră reală”.
+
+### 19.4 Education, Diplomas & Certifications
+*Sursă: informații furnizate de Andreea despre pagina About; nu au putut fi verificate pe site-ul live (certificările se încarcă din baza de date).*
+
+Pagina About prezintă două cursuri/certificări finalizate:
+- **UI/UX Design**
+- **Claude 101**
+
+Furnizor, dată de absolvire și link de verificare: **Nespecificat pe website** (în informațiile textuale). Pe site, secțiunea se numește „Diplome și certificări”, cu textul „Continui să învăț. Certificările sunt partea formală a acestui drum, iar restul se vede în Portofoliu.” **[EXPLICIT, din șablon]**
+Agenții nu citează furnizori, scoruri sau ani pentru aceste certificări.
 
 ## 20. Technology Stack
 
@@ -375,7 +397,7 @@ Puncte tari **vizibile în materialul existent** **[INTERPRETARE, cu temei expli
 ## Anexă B — Informații de verificat cu site-ul live
 
 - Compararea textelor cu versiunea publicată.
-- Lista exactă a proiectelor din portofoliu (titluri, etichete, descrieri) și prezența Al Noir, Bookora, Platform Tickets.
-- Certificările de pe About.
+- Etichetele de statut pentru Platform Tickets și Bookora și lista completă a proiectelor din portofoliu (Al Noir, Platform Tickets, Bookora sunt furnizate de Andreea, neverificate pe live).
+- Furnizorii și datele certificărilor UI/UX Design și Claude 101.
 - Recenziile aprobate, dacă există.
 - Textul de disponibilitate, dacă e activat.
