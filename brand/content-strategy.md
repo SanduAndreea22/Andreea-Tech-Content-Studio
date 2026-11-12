@@ -26,7 +26,7 @@ Unghiul consecvent al brandului (din site): *problema rezolvată, nu tehnologia.
 **Cum se leagă pilonii de poziționare:** 1 = credibilitate, 2 și 3 = competență, 4 = reducerea riscului la cumpărare, 5 = lărgirea ofertei (a treia direcție).
 
 **Limite importante:**
-- Copywriting-ul **nu** are pilon propriu: textele sunt incluse în proiecte (regulă de brand).
+- Copywriting-ul **nu** are pilon propriu și nu se vinde separat (textele sunt incluse în proiectele clienților). Regula privește oferta, nu postările brandului.
 - Pilonul 5 nu vinde „scriere de texte”, ci identitate și materiale vizuale.
 - Pilonul 3: Al Noir se prezintă mereu ca **demo funcțional**. Nu „am livrat unui restaurant”.
 
@@ -136,7 +136,7 @@ Cadența e propunere realistă pentru o persoană care lucrează singură și ru
 4. Preț: doar „de la €150/€250/€850”, fix după ofertă; niciodată tarif orar.
 5. Fără clienți, mărturii, procente sau „povești de origine” care nu sunt în fișă.
 6. Etichete exacte pentru proiecte: Demo funcțional · Produs propriu · Instrument propriu · Concept.
-7. Copywriting = inclus în proiect, nu serviciu.
+7. Copywriting nu se promovează ca serviciu separat (privește oferta, nu postările brandului).
 8. Despre Andreea: ton profesional/tehnic; nu se menționează tranziția de la contabilitate.
 9. Unghi îndrăzneț, nu generic: ia o poziție clară („un demo care arată bine într-o captură de ecran nu e un produs”).
 

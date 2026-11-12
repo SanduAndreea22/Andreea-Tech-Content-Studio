@@ -27,7 +27,7 @@ Content Researcher → Content Strategist → LinkedIn / Instagram Creator (+ Vi
 
 ## Reguli comune (nu se negociază)
 1. Fără clienți, mărturii, rezultate, cifre sau povești de origine inventate.
-2. Copywriting = inclus în proiecte, nu serviciu separat.
+2. Copywriting: în ofertă nu e serviciu separat (textele sunt incluse în proiecte). Regula nu limitează postările scrise pentru brandul Andreea Tech.
 3. Pe About, fără tranziția de la contabilitate; ton profesional/tehnic.
 4. Prețuri: „de la €150 / €250 / €850”, fix după ofertă; niciodată tarif orar.
 5. Etichete proiecte exacte: Demo funcțional · Produs propriu · Instrument propriu · Concept.
