@@ -303,7 +303,9 @@ Concordanță cu site-ul **[EXPLICIT]**: „produsele mele proprii: pornite din 
 - **Legătura cu agentul:** că postările din cont sunt create cu agentul beauty a fost spus de Andreea; captura nu arată procesul. Rezultate dincolo de vizualizările vizibile: Nespecificat.
 - **Eticheta recomandată:** „Instrument propriu”, cu mențiunea „agent configurat în Claude”.
 
-Reguli pentru agenți: nu se descrie ca aplicație, platformă, software sau produs de vânzare; nu se afirmă că e construit în Django sau cu cod; nu se atribuie rezultate; nu se prezintă ca serviciu oferit clienților (nu e pe site). Poate fi folosit ca exemplu că Andreea configurează asistenți AI pentru fluxuri reale de conținut.
+- **Imagini:** generate cu AI pornind de la fotografii reale cu Andreea și cu produsele ei (confirmat de Andreea). Produsele sunt ale ei.
+
+Reguli pentru agenți: imaginile se descriu mereu ca „generate cu AI pornind de la fotografii reale”, niciodată ca fotografii sau „filmări”; părerile despre produse se atribuie doar dacă Andreea le folosește sau le-a testat real; nu se atribuie rezultate (ten, efect) care nu au fost confirmate de ea; nu se folosesc imaginile ca „înainte/după” sau ca dovadă a unui rezultat; se recomandă eticheta de conținut AI de pe Instagram. În plus: nu se descrie ca aplicație, platformă, software sau produs de vânzare; nu se afirmă că e construit în Django sau cu cod; nu se atribuie rezultate; nu se prezintă ca serviciu oferit clienților (nu e pe site). Poate fi folosit ca exemplu că Andreea configurează asistenți AI pentru fluxuri reale de conținut.
 
 ### 19.3 Portofoliu (proiecte pentru servicii)
 Portofoliul se încarcă dintr-o bază de date; **lista concretă nu e în sursa analizată.** Regula de etichetare **[EXPLICIT]**:
