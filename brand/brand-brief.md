@@ -1,5 +1,6 @@
 # Andreea Tech — Brand Brief (sursa de adevăr)
 
+> **Sursa primară pentru identitatea existentă: `brand/brand-profile.md`** (extras din website). La conflict, câștigă brand-profile, apoi se semnalează.
 > Fișier citit de toți agenții din echipa de conținut. Îl actualizează Brand Strategist Agent.
 > Regulă: ce nu e confirmat rămâne `[DE COMPLETAT]`. Nu se inventează nimic.
 
