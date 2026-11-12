@@ -272,6 +272,22 @@ Toate sub licență SIL OFL 1.1; subseturi latin + latin-ext (acoperă româna).
 
 Ambele au demo simulat pe pagină (nimic nu se salvează).
 
+### 19.1b Proprietary Digital Products — completare furnizată de Andreea
+*Sursă: text furnizat direct de Andreea (nu extras din site). Descrierile se suprapun cu pagina Produse proprii; etichetele „Categorie” și secțiunea „Brand Philosophy” nu apar pe site ca atare.*
+
+> Andreea Tech dezvoltă și produse digitale proprii, pornind de la nevoi reale și experiențe personale, nu de la solicitări ale clienților.
+
+| Produs | Categorie *(furnizată)* | Descriere *(furnizată)* | Funcționalități | Status | Pagină |
+|---|---|---|---|---|---|
+| **Emotional Planner** | Digital Planner / Personal Organization | Planner digital care integrează urmărirea stării emoționale cu organizarea sarcinilor zilnice. | Planificare zilnică și săptămânală, obiective, obiceiuri, priorități, reflecție și echilibru | În testare, gratuit momentan | `/products/` (pagina produsului: `/products/planner/`) |
+| **MyBudget** | Personal Finance / Budget Management | Aplicație digitală pentru gestionarea veniturilor, cheltuielilor și limitelor de buget. | Evidența veniturilor și cheltuielilor, monitorizarea bugetului, economiilor și obiectivelor financiare | În testare, gratuit momentan | `/products/` (pagina produsului: `/products/budget/`) |
+
+**Brand Philosophy (furnizată de Andreea):**
+- Produsele proprii pornesc de la identificarea unor nevoi reale și transformarea lor în experiențe digitale funcționale.
+- Ele demonstrează capacitatea brandului de a identifica probleme, de a concepe produse și de a construi soluții digitale complete.
+
+Concordanță cu site-ul **[EXPLICIT]**: „produsele mele proprii: pornite din nevoi personale, nu dintr-o cerere de client” și „aceeași metodă stă în spatele a ce construiesc pentru afaceri: pornesc de la o nevoie reală, nu de la un șablon”. Partea despre „capacitatea de a identifica probleme, concepe produse și construi soluții complete” este formulare nouă, nepreluată de pe site: se folosește ca poziționare a produselor proprii, fără a fi citată ca text de website.
+
 ### 19.2 Instrument propriu
 **SM Writer (Social Media Writer)** — asistent AI intern care scrie zilnic postările de social media ale Andreei; descris ca ceva care „rulează acum”. **[EXPLICIT, About]**
 
