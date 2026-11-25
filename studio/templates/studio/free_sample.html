@@ -12,6 +12,7 @@
       <div class="eyebrow">Free ad</div>
       <h1 class="sec-title">Tell me about your business. I will write you a free ad.</h1>
       <p class="lead">I write you one short ad for your business, for free, and send it by email within 2 working days. Most useful to me: what you sell, who buys it, and what you want people to do after they see the ad. The form takes about 3 minutes.</p>
+      {% if package %}<p class="package-note">You asked about <b>{{ package.name }}</b> (€{{ package.price }}). You still get your free ad first.</p>{% endif %}
 
       <form method="post" novalidate>
         {% csrf_token %}
@@ -26,16 +27,21 @@
         {% endif %}
         <div class="hp" aria-hidden="true">{{ form.hp_check.label_tag }} {{ form.hp_check }}</div>
 
-        <div class="field">{{ form.name.label_tag }}{{ form.name }}{% for e in form.name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field">{{ form.email.label_tag }}{{ form.email }}{% for e in form.email.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field">{{ form.business_name.label_tag }}{{ form.business_name }}{% for e in form.business_name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field req">{{ form.name.label_tag }}{{ form.name }}{% for e in form.name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field req">{{ form.email.label_tag }}{{ form.email }}{% for e in form.email.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field req">{{ form.business_name.label_tag }}{{ form.business_name }}{% for e in form.business_name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field">{{ form.service.label_tag }}{{ form.service }}{% for e in form.service.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full">{{ form.what_you_sell.label_tag }}{{ form.what_you_sell }}{% for e in form.what_you_sell.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full">{{ form.link.label_tag }}{{ form.link }}<span class="hint">{{ form.link.help_text }}</span>{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full req">{{ form.what_you_sell.label_tag }}{{ form.what_you_sell }}{% for e in form.what_you_sell.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}<span class="hint">{{ form.goal.help_text }}</span>{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <details class="more-details" {% if form.link.value or form.message.value or form.link.errors or form.message.errors %}open{% endif %}>
+          <summary>Add more details (optional)</summary>
+          <div class="more-fields">
+            <div class="field full">{{ form.link.label_tag }}{{ form.link }}<span class="hint">{{ form.link.help_text }}</span>{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+            <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+          </div>
+        </details>
         <div class="field full"><button class="btn" type="submit">Send and get my free ad</button></div>
-        <p class="privacy full">I use your details only to reply to your request and write your sample. <a href="{% url 'privacy' %}">Privacy</a></p>
+        <p class="privacy full">I use your details only to reply to your request and write your ad. <a href="{% url 'privacy' %}">Privacy</a></p>
       </form>
     </div>
 

@@ -345,3 +345,14 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { border-color
   .sticky-cta .btn { padding: 17px 22px; }
   .chip { padding: 13px 18px; }
 }
+
+/* form: required marker, chosen package, optional details */
+.field.req > label::after { content: " (required)"; text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--text-dim); }
+.package-note { margin-top: 14px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); color: var(--text-dim); max-width: 62ch; }
+.package-note b { color: var(--text); font-weight: 500; }
+.more-details { grid-column: 1 / -1; }
+.more-details summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; padding: 14px 0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.more-details summary::-webkit-details-marker { display: none; }
+.more-details summary::before { content: "+"; font-size: 18px; line-height: 1; }
+.more-details[open] summary::before { content: "\2013"; }
+.more-fields { display: grid; gap: 16px; padding-bottom: 4px; }

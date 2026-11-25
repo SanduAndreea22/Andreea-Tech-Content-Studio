@@ -55,7 +55,18 @@ def about(request):
     return render(request, "studio/about.html")
 
 
+def _chosen_package(request):
+    """The package picked on the Packages page (from the address), or None."""
+    chosen = request.GET.get("package")
+    for group in PACKAGE_GROUPS:
+        for pack in group["packages"]:
+            if pack["name"] == chosen:
+                return pack
+    return None
+
+
 def free_sample(request):
+    package = _chosen_package(request)
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -67,13 +78,10 @@ def free_sample(request):
         if service in dict(ContactForm.Meta.model.SERVICE_CHOICES):
             initial["service"] = service
         # A package button on the Packages page pre-fills the message with the chosen package.
-        chosen = request.GET.get("package")
-        for group in PACKAGE_GROUPS:
-            for pack in group["packages"]:
-                if pack["name"] == chosen:
-                    initial["message"] = f"I'm interested in the {pack['name']} package (€{pack['price']})."
+        if package:
+            initial["message"] = f"I'm interested in the {package['name']} package (€{package['price']})."
         form = ContactForm(initial=initial)
-    return render(request, "studio/free_sample.html", {"form": form})
+    return render(request, "studio/free_sample.html", {"form": form, "package": package})
 
 
 def free_sample_thanks(request):

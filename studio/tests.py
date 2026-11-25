@@ -279,6 +279,38 @@ class SiteTests(TestCase):
         self.assertIn("I will write to you from andreea.sandu.copy@gmail.com.", html)
         self.assertIn("check your spam folder", html)
 
+    def test_required_fields_are_marked(self):
+        html = self.client.get(reverse("free_sample")).content.decode()
+        self.assertEqual(html.count('class="field req"') + html.count('class="field full req"'), 4)
+
+    def test_package_note_shows_at_the_top_when_a_package_was_chosen(self):
+        html = self.client.get(reverse("free_sample") + "?package=Standard%20Posts").content.decode()
+        self.assertIn("You asked about <b>Standard Posts</b> (€110). You still get your free ad first.", html)
+        self.assertNotIn("package-note", self.client.get(reverse("free_sample")).content.decode().split("<form")[0].replace(".package-note", ""))
+
+    def test_package_note_stays_when_the_form_comes_back_with_errors(self):
+        html = self.client.post(reverse("free_sample") + "?package=Full%20Month", {}).content.decode()
+        self.assertIn("You asked about <b>Full Month</b>", html)
+
+    def test_unknown_package_shows_no_note(self):
+        self.assertNotContains(self.client.get(reverse("free_sample") + "?package=zzinject"), "You asked about")
+
+    def test_extra_fields_are_folded_away_until_needed(self):
+        fresh = self.client.get(reverse("free_sample")).content.decode()
+        self.assertIn('<details class="more-details" >', fresh)
+        self.assertIn("Add more details (optional)", fresh)
+        chosen = self.client.get(reverse("free_sample") + "?package=Full%20Month").content.decode()
+        self.assertIn('<details class="more-details" open>', chosen)
+        too_long = self.client.post(reverse("free_sample"), valid_post(message="x" * 2001)).content.decode()
+        self.assertIn('<details class="more-details" open>', too_long)
+
+    def test_goal_stays_visible_outside_the_folded_part(self):
+        html = self.client.get(reverse("free_sample")).content.decode()
+        folded = html.split('<details class="more-details"')[1].split("</details>")[0]
+        self.assertIn('id="id_link"', folded)
+        self.assertIn('id="id_message"', folded)
+        self.assertNotIn('id="id_goal"', folded)
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 
