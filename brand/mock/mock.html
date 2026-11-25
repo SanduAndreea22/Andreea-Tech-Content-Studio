@@ -56,6 +56,8 @@ p { margin: 0; }
 .nav { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); flex-wrap: wrap; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
 .nav a { color: var(--text-dim); padding-bottom: 3px; border-bottom: 1px solid transparent; }
 .nav a.on { color: var(--text); border-color: var(--gold); }
+.nav a.btn { color: var(--bg); padding-bottom: 11px; border-bottom-color: var(--gold); }
+.nav a.btn:hover { color: var(--bg); }
 
 .btn { display: inline-block; font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; padding: 14px 22px; border: 1px solid var(--gold); background: var(--gold); color: var(--bg); border-radius: 2px; cursor: pointer; }
 .btn.ghost { background: transparent; color: var(--gold); }
