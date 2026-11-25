@@ -30,6 +30,14 @@ def home(request):
     return render(request, "studio/home.html", {"json_ld": json.dumps(data).replace("<", "\\u003c")})
 
 
+# Google Search Console checks that this file exists. It must stay on the site, even after verification.
+GOOGLE_VERIFICATION_FILE = "googlebe6c6cb259961fe8.html"
+
+
+def google_verification(request):
+    return HttpResponse(f"google-site-verification: {GOOGLE_VERIFICATION_FILE}", content_type="text/html")
+
+
 def robots_txt(request):
     lines = [
         "User-agent: *",

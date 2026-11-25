@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"),
     path("robots.txt", views.robots_txt, name="robots_txt"),
+    path(views.GOOGLE_VERIFICATION_FILE, views.google_verification, name="google_verification"),
     path("services/", views.services, name="services"),
     path("packages/", views.packages, name="packages"),
     path("portfolio/", views.portfolio, name="portfolio"),

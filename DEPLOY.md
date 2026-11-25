@@ -89,7 +89,8 @@ python manage.py delete_old_requests --yes    # deletes them
 ## Appearing on Google
 The site already has `sitemap.xml` and `robots.txt`. To tell Google it exists:
 1. Go to https://search.google.com/search-console and add a property of type **URL prefix** with `https://YOURUSER.pythonanywhere.com/`.
-2. Choose the **HTML tag** verification method. Google shows a tag like `<meta name="google-site-verification" content="CODE">`. Copy only the CODE.
+2. Choose a verification method. The site supports two: the **HTML file** (already set up: it is served at `/googlebe6c6cb259961fe8.html` and must never be removed) or the **HTML tag** (below).
+   For the HTML tag method: choose **HTML tag**. Google shows a tag like `<meta name="google-site-verification" content="CODE">`. Copy only the CODE.
 3. In the WSGI file (Web tab) add `os.environ["GOOGLE_SITE_VERIFICATION"] = "CODE"` above the Django lines, save, and press **Reload**. Then press **Verify** in Search Console.
 4. In Search Console, open **Sitemaps** and add `sitemap.xml`.
 5. Open **URL inspection**, paste the home page address and press **Request indexing**.

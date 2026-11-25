@@ -416,6 +416,14 @@ class SiteTests(TestCase):
         self.assertIn("https://www.linkedin.com/in/andreeasandu22", data["sameAs"])
         self.assertNotIn("ld+json", self.client.get(reverse("services")).content.decode())
 
+    def test_google_verification_file_is_served_exactly(self):
+        response = self.client.get("/googlebe6c6cb259961fe8.html")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content.decode(), "google-site-verification: googlebe6c6cb259961fe8.html")
+
+    def test_google_verification_file_is_not_listed_in_the_sitemap(self):
+        self.assertNotIn("googlebe6c6cb259961fe8", self.client.get("/sitemap.xml").content.decode())
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 
