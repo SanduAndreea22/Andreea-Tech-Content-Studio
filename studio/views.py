@@ -9,8 +9,17 @@ def home(request):
     return render(request, "studio/home.html")
 
 
+def _cheapest(group_title):
+    for group in PACKAGE_GROUPS:
+        if group["title"] == group_title:
+            return min(pack["price"] for pack in group["packages"])
+
+
 def services(request):
-    return render(request, "studio/services.html")
+    return render(request, "studio/services.html", {
+        "ads_from": _cheapest("Ads"),
+        "posts_from": _cheapest("Social media posts"),
+    })
 
 
 def packages(request):
@@ -52,6 +61,12 @@ def contact(request):
         service = request.GET.get("service")
         if service in dict(ContactForm.Meta.model.SERVICE_CHOICES):
             initial["service"] = service
+        # A package button on the Packages page pre-fills the message with the chosen package.
+        chosen = request.GET.get("package")
+        for group in PACKAGE_GROUPS:
+            for pack in group["packages"]:
+                if pack["name"] == chosen:
+                    initial["message"] = f"I'm interested in the {pack['name']} package (€{pack['price']})."
         form = ContactForm(initial=initial)
     return render(request, "studio/contact.html", {"form": form})
 

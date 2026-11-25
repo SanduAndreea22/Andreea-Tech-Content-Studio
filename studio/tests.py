@@ -59,6 +59,36 @@ class SiteTests(TestCase):
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("contact")), "I use your details only to reply")
 
+    def test_package_button_prefills_message(self):
+        response = self.client.get(reverse("contact") + "?service=posts&package=Full%20Month")
+        self.assertContains(response, "I&#x27;m interested in the Full Month package (€200).")
+
+    def test_unknown_package_is_ignored(self):
+        response = self.client.get(reverse("contact") + "?package=zzinject")
+        self.assertNotContains(response, "zzinject")
+
+    def test_packages_page_links_carry_the_package_name(self):
+        html = self.client.get(reverse("packages")).content.decode()
+        self.assertIn("package=Full%20Month", html)
+        self.assertIn("package=1%20Ad", html)
+
+    def test_empty_portfolio_hides_filters(self):
+        html = self.client.get(reverse("portfolio")).content.decode()
+        self.assertIn("coming soon", html)
+        self.assertNotIn("Open a card", html)
+        self.assertNotIn('class="chip', html)
+
+    def test_empty_category_keeps_filters_and_explains(self):
+        self.make_sample(category="ad")
+        html = self.client.get(reverse("portfolio") + "?category=reels").content.decode()
+        self.assertIn("No samples in this category yet", html)
+        self.assertIn('class="chip', html)
+
+    def test_services_show_starting_prices(self):
+        html = self.client.get(reverse("services")).content.decode()
+        self.assertIn("Packages from €30", html)
+        self.assertIn("Packages from €45", html)
+
     def test_packages_show_prices(self):
         html = self.client.get(reverse("packages")).content.decode()
         for price in ["€30", "€75", "€45", "€110", "€200"]:

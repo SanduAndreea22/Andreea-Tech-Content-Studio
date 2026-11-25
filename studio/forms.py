@@ -36,9 +36,13 @@ class ContactForm(forms.ModelForm):
             "business_name": forms.TextInput(attrs={"placeholder": "Your business"}),
             "what_you_sell": forms.Textarea(attrs={
                 "rows": 3, "placeholder": "Short description of your business and your customers"}),
-            "link": forms.TextInput(attrs={"placeholder": "Link"}),
-            "goal": forms.TextInput(attrs={"placeholder": "More messages, more sales, a full event..."}),
-            "message": forms.Textarea(attrs={"rows": 4, "placeholder": "Message"}),
+            "link": forms.TextInput(attrs={"placeholder": "Link to your Instagram, Facebook or website"}),
+            "goal": forms.TextInput(attrs={"placeholder": "Your main goal"}),
+            "message": forms.Textarea(attrs={"rows": 4, "placeholder": "Anything else you want me to know"}),
+        }
+        help_texts = {
+            "goal": "For example: more messages, more sales, a full event.",
+            "link": "One link is enough.",
         }
 
     def clean(self):

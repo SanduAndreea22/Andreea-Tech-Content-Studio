@@ -22,8 +22,8 @@
         <div class="field">{{ form.business_name.label_tag }}{{ form.business_name }}{% for e in form.business_name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field">{{ form.service.label_tag }}{{ form.service }}{% for e in form.service.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.what_you_sell.label_tag }}{{ form.what_you_sell }}{% for e in form.what_you_sell.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full">{{ form.link.label_tag }}{{ form.link }}{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.link.label_tag }}{{ form.link }}<span class="hint">{{ form.link.help_text }}</span>{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}<span class="hint">{{ form.goal.help_text }}</span>{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full"><button class="btn" type="submit">Send and get my free sample</button></div>
         <p class="privacy full">I use your details only to reply to your request and write your sample.</p>

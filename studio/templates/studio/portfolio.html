@@ -8,6 +8,7 @@
   <div class="wrap">
     <div class="eyebrow">Portfolio</div>
     <h1 class="sec-title">Sample projects</h1>
+    {% if samples or active_category %}
     <p class="lead">These samples are written for example businesses, to show how I work. Open a card to read the PDF.</p>
 
     <nav class="chips" aria-label="Filter by category">
@@ -16,6 +17,7 @@
       <a class="chip{% if active_category == value %} on{% endif %}" href="?category={{ value }}">{{ label }}</a>
       {% endfor %}
     </nav>
+    {% endif %}
 
     {% if samples %}
     <div class="grid3">
@@ -31,7 +33,12 @@
       {% endfor %}
     </div>
     {% else %}
-    <p class="empty">New samples are coming soon. Meanwhile, <a href="{% url 'contact' %}">ask for a free sample written for your business</a>.</p>
+    {% if active_category %}
+    <p class="empty">No samples in this category yet. <a href="{% url 'portfolio' %}">See all samples</a>.</p>
+    {% else %}
+    <p class="lead">New sample projects are coming soon.</p>
+    <p class="empty">Meanwhile, <a href="{% url 'contact' %}">ask for a free ad written for your business</a>.</p>
+    {% endif %}
     {% endif %}
   </div>
 </section>
