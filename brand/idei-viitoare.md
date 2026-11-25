@@ -59,3 +59,21 @@ De exemplu `nume.ro` si `contact@nume.ro`.
 - **HSTS** (obliga browserul sa foloseasca doar HTTPS): de pornit dupa ce site-ul merge stabil.
 - **Pagini de eroare cu brandul tau** (404, 500).
 - **Paginare in Portfolio**, daca ajungi la multe zeci de mostre.
+
+---
+
+## Din auditul de experienta (ce nu s-a facut)
+
+Cele 3 puncte urgente si 3 din cele 4 optionale sunt facute (mesaje de eroare clare cu rezumat, linkuri mai mari pe telefon, nota despre email si spam, campuri obligatorii marcate, pachetul ales afisat sus, campuri pliate). Raman:
+
+- **Validare imediata in formular:** mesajul apare cand iesi dintr-un camp, nu abia dupa trimitere. Efort mediu (cod in browser pe langa verificarea de pe server). Aduce putin acum, pentru ca rezumatul de erori merge bine.
+- **Formular in doi pasi pe telefon** (mai intai ce vinzi si cui, apoi datele de contact): ar scurta si mai mult ecranul, dar e o schimbare mai mare si ar ascunde o parte din formular. De gandit doar daca vezi ca oamenii il parasesc.
+
+## De verificat dupa ce actualizezi site-ul pe PythonAnywhere
+
+Acestea nu s-au putut verifica de aici si cer ochii tai:
+- **Parcursul complet pe site-ul real:** de la Home la formular, o trimitere de test, pagina de multumire, apoi mesajul apare in admin. Pe site-ul de acum ruleaza inca versiunea veche.
+- **Filtrele din Portfolio pe telefon:** au primit mai mult spatiu, dar nu s-au putut masura, pentru ca portofoliul e gol. Dupa ce incarci mostra, verifica ca se apasa usor.
+- **PDF-ul deschis in pagina:** browserul meu de test nu are cititor de PDF. Verifica in Chrome si Safari cu mostra ta reala. Daca nu se deschide in pagina, ramane linkul "Open it in a new tab".
+- **Emailul din Gmail:** site-ul nu trimite emailuri, deci omul primeste reclama cand ii scrii tu. Trimite-ti un email de test de la adresa din Gmail catre o alta adresa si verifica ca nu ajunge in spam, pentru ca pagina de multumire promite "I will write to you from ...".
+- **Previzualizarea linkului** (poza si titlul cand distribui site-ul): dupa actualizare, testeaza-o la distribuire pe WhatsApp si pe LinkedIn. Platformele tin imaginea in memorie, deci poate dura pana apare cea noua.
