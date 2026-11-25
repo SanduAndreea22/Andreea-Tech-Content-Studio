@@ -109,7 +109,7 @@ class SiteTests(TestCase):
         html = self.client.get(reverse("services")).content.decode()
         self.assertIn('id="how-we-work"', html)
         self.assertIn("You pay upfront. Once you select a package, I'll send you the payment details.", html)
-        self.assertIn("Each round takes up to 2 working days", html)
+        self.assertIn("each time takes me up to 2 working days", html)
         self.assertIn("The time counts from the day I receive your payment", html)
 
     def test_delivery_days_come_from_one_place(self):
@@ -141,7 +141,7 @@ class SiteTests(TestCase):
 
     def test_hero_says_who_it_is_for(self):
         self.assertContains(self.client.get(reverse("home")),
-                            "businesses that do not know how to make their own ads and posts, or do not have the time")
+                            "Writing ads and posts takes time. If you do not have it, or do not know where to start, I write them for you.")
 
     def _request(self, email, age_days):
         r = ContactRequest.objects.create(name="N", email=email, business_name="B", what_you_sell="x")
@@ -161,6 +161,22 @@ class SiteTests(TestCase):
         keep = self._request("new@example.com", 30)
         call_command("delete_old_requests", "--yes", stdout=StringIO())
         self.assertEqual(list(ContactRequest.objects.values_list("pk", flat=True)), [keep.pk])
+
+    def test_no_jargon_and_one_word_per_idea(self):
+        banned = ["button to act", "call to action", "calls to action", "No hourly billing", "messages that sell",
+                  "sales-focused", "target audience", "brand preferences", "post concepts", "post ideas", "carousel content"]
+        for name in ["home", "services", "packages", "about", "free_sample", "contact", "free_sample_thanks"]:
+            html = self.client.get(reverse(name)).content.decode()
+            for phrase in banned:
+                with self.subTest(page=name, phrase=phrase):
+                    self.assertNotIn(phrase, html)
+
+    def test_every_ad_package_starts_from_the_customers_problem(self):
+        html = self.client.get(reverse("packages")).content.decode()
+        self.assertEqual(html.count("starts from your customer&#x27;s problem") + html.count("Starts from your customer&#x27;s problem"), 2)
+
+    def test_packages_say_the_time_counts_after_payment(self):
+        self.assertContains(self.client.get(reverse("packages")), "working days after payment")
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")

@@ -9,6 +9,7 @@
     <div class="eyebrow">Packages</div>
     <h1 class="sec-title">Fixed prices. You know what you get.</h1>
     <hr class="rule">
+    <p class="lead">Every package starts with your free ad: you fill in the form, I send you the ad, and then you choose.</p>
 
     {% for group in groups %}
     <div class="group">
@@ -19,11 +20,11 @@
         <article class="pack{% if pack.highlight %} best{% endif %}">
           <h3>{{ pack.name }}</h3>
           <div class="price">€{{ pack.price }}</div>
-          <p class="days">Ready in {{ pack.days }} working days</p>
+          <p class="days">Ready in {{ pack.days }} working days after payment</p>
           <ul>
             {% for item in pack.features %}<li>{{ item }}</li>{% endfor %}
           </ul>
-          <a class="btn{% if not pack.highlight %} ghost{% endif %}" href="{% url 'free_sample' %}?service={% if group.title == 'Ads' %}ads{% else %}posts{% endif %}&amp;package={{ pack.name|urlencode }}">Choose this package</a>
+          <a class="btn{% if not pack.highlight %} ghost{% endif %}" href="{% url 'free_sample' %}?service={% if group.title == 'Ads' %}ads{% else %}posts{% endif %}&amp;package={{ pack.name|urlencode }}">Ask about this package</a>
         </article>
         {% endfor %}
       </div>
@@ -31,7 +32,7 @@
     {% endfor %}
 
     <div class="note-row">
-      <p><b>Need product, service &amp; event texts?</b> They are an extra, with a fixed price per text.</p>
+      <p><b>Need product, service &amp; event texts?</b> I price them per text. Ask me and I will tell you the price for your texts.</p>
       <p><b>Not sure what to pick?</b> Ask for a free sample first and I will suggest a package.</p>
     </div>
   </div>

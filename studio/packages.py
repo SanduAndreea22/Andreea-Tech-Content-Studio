@@ -10,7 +10,7 @@ REVISION_DAYS = 2  # working days for each round of changes
 PACKAGE_GROUPS = [
     {
         "title": "Ads",
-        "intro": "Ready-to-use ads: headline, text and a button to act.",
+        "intro": "Ready-to-use ads: a headline, the text and a clear next step for the reader.",
         "packages": [
             {
                 "name": "1 Ad",
@@ -30,7 +30,8 @@ PACKAGE_GROUPS = [
                 "price": 75,
                 "features": [
                     "3 ads, each for a different offer or customer",
-                    "Headlines and buttons for each",
+                    "A headline and a clear next step for each ad",
+                    "Each ad starts from your customer's problem",
                     REVISIONS,
                 ],
                 "highlight": False,
@@ -47,7 +48,7 @@ PACKAGE_GROUPS = [
                 "price": 45,
                 "features": [
                     "4 posts for Instagram and Facebook",
-                    "Text and call to action for each",
+                    "Text and a clear next step for each post",
                     REVISIONS,
                 ],
                 "highlight": False,

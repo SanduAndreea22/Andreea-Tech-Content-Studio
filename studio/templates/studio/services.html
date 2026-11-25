@@ -9,22 +9,22 @@
     <div class="eyebrow">Services</div>
     <h1 class="sec-title">What I can write for you</h1>
     <hr class="rule">
-    <p class="lead">Every text starts with your business, your customers and what you want to achieve. Then I write something clear that gives people a reason to stop and read.</p>
+    <p class="lead">Every text starts with your business, your customers and what you want to achieve.</p>
 
     <div class="service-list">
       <article class="service-item">
         <h2>Ads</h2>
-        <p>Promotional copy, advertising concepts, persuasive messages, headlines and calls to action. Each ad starts from a problem your customer feels, then shows how your offer solves it. You get ads that are ready to publish.</p>
+        <p>A ready-to-publish ad: headline, text and a clear next step for the reader. Each ad starts from a problem your customer feels, then shows how your offer solves it.</p>
         <p class="meta-line">Packages from €{{ ads_from }}. <a href="{% url 'packages' %}">See the ad packages</a></p>
       </article>
       <article class="service-item">
         <h2>Social media posts</h2>
-        <p>Instagram post concepts, carousels (posts with several images), captions and Reels scripts. Each post has clear text and a next step for your followers.</p>
+        <p>Instagram and Facebook posts, carousels (posts with several images), captions and Reels scripts (scripts for short videos). Each post has its text and one clear next step for your followers, for example: comment, send a message or order.</p>
         <p class="meta-line">Packages from €{{ posts_from }}. <a href="{% url 'packages' %}">See the post packages</a></p>
       </article>
       <article class="service-item">
         <h2>Product, service &amp; event texts</h2>
-        <p>Product and service descriptions, event announcements, promotional messages and sales-focused content.</p>
+        <p>Descriptions of your products and services, and announcements for your events.</p>
         <p class="meta-line">Fixed price per text. <a href="{% url 'free_sample' %}?service=texts">Ask for the price</a></p>
       </article>
     </div>
@@ -36,14 +36,14 @@
     <div class="eyebrow">How we work</div>
     <h2 class="sec-title">From your first message to the final texts</h2>
     <ol class="how-list">
-      <li><span class="ring" aria-hidden="true">1</span><div><h3>Tell me about your business</h3><p>Fill in the short form: what you sell, who it is for and what you want to achieve. It takes about 3 minutes.</p></div></li>
+      <li><span class="ring" aria-hidden="true">1</span><div><h3>Tell me about your business</h3><p>Fill in the short form: what you sell and who you sell to. It takes about 3 minutes.</p></div></li>
       <li><span class="ring" aria-hidden="true">2</span><div><h3>Get your free ad</h3><p>I write one short ad for your business and send it by email within 2 working days.</p></div></li>
-      <li><span class="ring" aria-hidden="true">3</span><div><h3>Choose a package</h3><p>If you like the ad, we choose a package together. The price is fixed, never per hour.</p></div></li>
+      <li><span class="ring" aria-hidden="true">3</span><div><h3>Choose a package</h3><p>If you like the ad, we choose a package together. The price is fixed.</p></div></li>
       <li><span class="ring" aria-hidden="true">4</span><div><h3>Payment</h3><p>You pay upfront. Once you select a package, I'll send you the payment details.</p></div></li>
-      <li><span class="ring" aria-hidden="true">5</span><div><h3>Send me what I need</h3><p>A short description of your business, your target audience, the links to your social media and your brand preferences. Send it when you pay, so I can start right away.</p></div></li>
-      <li><span class="ring" aria-hidden="true">6</span><div><h3>I write</h3><p>The time counts from the day I receive your payment.</p>
+      <li><span class="ring" aria-hidden="true">5</span><div><h3>Send me what I need</h3><p>A short description of your business, who your customers are, the links to your social media, and anything about your style: colors, tone, examples you like. Send it when you pay, so I can start right away.</p></div></li>
+      <li><span class="ring" aria-hidden="true">6</span><div><h3>I write</h3><p><b>The time counts from the day I receive your payment.</b></p>
         <ul class="days-list">{% for group in groups %}{% for pack in group.packages %}<li><b>{{ pack.name }}</b> <span>{{ pack.days }} working days</span></li>{% endfor %}{% endfor %}</ul></div></li>
-      <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You get 2 rounds of changes. Each round takes up to {{ revision_days }} working days. I send the final texts by email, in a document.</p></div></li>
+      <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You get 2 rounds of changes: you send me your changes, I update the text. You can do this twice, and each time takes me up to {{ revision_days }} working days. I send the final texts by email, in a document.</p></div></li>
     </ol>
   </div>
 </section>

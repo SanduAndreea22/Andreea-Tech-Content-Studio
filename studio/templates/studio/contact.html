@@ -11,6 +11,7 @@
       <div class="eyebrow">Contact</div>
       <h1 class="sec-title">Write to me directly.</h1>
       <hr class="rule">
+      <p class="lead">For questions, write here. For a free ad, use the form below.</p>
       {% if SITE_LINKS %}
       <ul class="contact-list">
         {% if SITE_LINKS.email %}<li><span>Email</span><a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a></li>{% endif %}
@@ -30,7 +31,7 @@
     <aside class="side-card">
       <img src="{% static 'studio/img/portrait-round.webp' %}" width="280" height="280" alt="Portrait of {{ SITE_NAME }}">
       <h2>{{ SITE_NAME }}</h2>
-      <p>{{ SITE_TAGLINE }}. I value clear communication, attention to detail and working closely with you.</p>
+      <p>{{ SITE_TAGLINE }}.</p>
     </aside>
   </div>
 </section>
