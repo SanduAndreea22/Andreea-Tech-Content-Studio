@@ -349,6 +349,11 @@ class SiteTests(TestCase):
         self.assertIn("Ad sent", labels)
         self.assertNotIn("Sample sent", labels)
 
+    def test_about_button_uses_the_same_name_as_the_rest_of_the_site(self):
+        html = self.client.get(reverse("about")).content.decode()
+        self.assertIn(">See sample projects</a>", html)
+        self.assertNotIn("See my samples", html)
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 
