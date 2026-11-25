@@ -7,4 +7,5 @@ def site(request):
         "SITE_NAME": settings.SITE_NAME,
         "SITE_TAGLINE": settings.SITE_TAGLINE,
         "SITE_LINKS": links,
+        "GOOGLE_SITE_VERIFICATION": settings.GOOGLE_SITE_VERIFICATION,
     }

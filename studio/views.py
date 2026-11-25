@@ -1,4 +1,10 @@
+import json
+
+from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.templatetags.static import static
+from django.urls import reverse
 
 from .forms import ContactForm
 from .models import SampleProject
@@ -6,7 +12,32 @@ from .packages import PACKAGE_GROUPS, REVISION_DAYS, TEXT_PRICE
 
 
 def home(request):
-    return render(request, "studio/home.html")
+    links = {key: value for key, value in settings.SITE_LINKS.items() if value}
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": settings.SITE_NAME,
+        "jobTitle": settings.SITE_TAGLINE,
+        "url": request.build_absolute_uri(reverse("home")),
+        "image": request.build_absolute_uri(static("studio/img/hero-portrait.webp")),
+    }
+    if links.get("email"):
+        data["email"] = links["email"]
+    same_as = [links[key] for key in ("linkedin", "instagram", "facebook") if links.get(key)]
+    if same_as:
+        data["sameAs"] = same_as
+    # "<" is escaped so the data can never close the script tag.
+    return render(request, "studio/home.html", {"json_ld": json.dumps(data).replace("<", "\\u003c")})
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /free-sample/thanks/",
+        f"Sitemap: {request.build_absolute_uri(reverse('sitemap'))}",
+    ]
+    return HttpResponse("\n".join(lines) + "\n", content_type="text/plain")
 
 
 def _cheapest(group_title):

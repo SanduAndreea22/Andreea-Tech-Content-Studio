@@ -86,6 +86,16 @@ python manage.py delete_old_requests          # shows how many are older than 12
 python manage.py delete_old_requests --yes    # deletes them
 ```
 
+## Appearing on Google
+The site already has `sitemap.xml` and `robots.txt`. To tell Google it exists:
+1. Go to https://search.google.com/search-console and add a property of type **URL prefix** with `https://YOURUSER.pythonanywhere.com/`.
+2. Choose the **HTML tag** verification method. Google shows a tag like `<meta name="google-site-verification" content="CODE">`. Copy only the CODE.
+3. In the WSGI file (Web tab) add `os.environ["GOOGLE_SITE_VERIFICATION"] = "CODE"` above the Django lines, save, and press **Reload**. Then press **Verify** in Search Console.
+4. In Search Console, open **Sitemaps** and add `sitemap.xml`.
+5. Open **URL inspection**, paste the home page address and press **Request indexing**.
+
+It usually takes a few days to a few weeks to appear. Searching for `site:YOURUSER.pythonanywhere.com` on Google shows which pages are already known.
+
 ## 6. Free account reminders
 - Press **Run until 3 months from today** in the Web tab every 3 months, or the site stops.
 - Back up `db.sqlite3` and the `media/` folder from time to time (download them from the Files tab). They hold your messages and PDFs and are not in GitHub.

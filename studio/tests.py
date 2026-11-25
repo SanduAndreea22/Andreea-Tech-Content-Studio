@@ -368,6 +368,54 @@ class SiteTests(TestCase):
     def test_cover_hint_tells_the_best_size(self):
         self.assertIn("1200 x 900", SampleProject._meta.get_field("cover").help_text)
 
+    def test_sitemap_lists_public_pages_and_published_samples_only(self):
+        shown = self.make_sample(title="Shown")
+        hidden = self.make_sample(title="Hidden", is_published=False,
+                                  pdf=SimpleUploadedFile("h.pdf", PDF_BYTES, content_type="application/pdf"))
+        response = self.client.get("/sitemap.xml")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("xml", response["Content-Type"])
+        xml = response.content.decode()
+        for path in ["/", "/services/", "/packages/", "/portfolio/", "/about/", "/contact/", "/privacy/", f"/portfolio/{shown.pk}/"]:
+            self.assertIn(f"http://testserver{path}</loc>", xml)
+        self.assertNotIn("/free-sample/", xml)
+        self.assertNotIn(f"/portfolio/{hidden.pk}/", xml)
+        self.assertNotIn("admin", xml)
+
+    def test_robots_txt_points_to_the_sitemap_and_hides_the_thank_you_page(self):
+        response = self.client.get("/robots.txt")
+        self.assertEqual(response["Content-Type"], "text/plain")
+        text = response.content.decode()
+        self.assertIn("Sitemap: http://testserver/sitemap.xml", text)
+        self.assertIn("Disallow: /free-sample/thanks/", text)
+        self.assertNotIn("admin", text.lower())
+
+    def test_thank_you_page_is_kept_out_of_google(self):
+        self.assertContains(self.client.get(reverse("free_sample_thanks")), '<meta name="robots" content="noindex">')
+        self.assertNotContains(self.client.get(reverse("home")), 'content="noindex"')
+
+    def test_every_page_names_its_own_canonical_address(self):
+        html = self.client.get(reverse("packages") + "?package=Full%20Month").content.decode()
+        self.assertIn('<link rel="canonical" href="http://testserver/packages/">', html)
+
+    @override_settings(GOOGLE_SITE_VERIFICATION="abc123")
+    def test_google_verification_tag_appears_only_when_set(self):
+        self.assertContains(self.client.get(reverse("home")), '<meta name="google-site-verification" content="abc123">')
+
+    def test_no_verification_tag_by_default(self):
+        self.assertNotContains(self.client.get(reverse("home")), "google-site-verification")
+
+    def test_home_describes_andreea_to_search_engines(self):
+        import json, re
+        html = self.client.get(reverse("home")).content.decode()
+        data = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S).group(1))
+        self.assertEqual(data["@type"], "Person")
+        self.assertEqual(data["name"], "Andreea Sandu")
+        self.assertEqual(data["jobTitle"], "Copywriter & Social Media Content Creator")
+        self.assertEqual(data["email"], "andreea.sandu.copy@gmail.com")
+        self.assertIn("https://www.linkedin.com/in/andreeasandu22", data["sameAs"])
+        self.assertNotIn("ld+json", self.client.get(reverse("services")).content.decode())
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 

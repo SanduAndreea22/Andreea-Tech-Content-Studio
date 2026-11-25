@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "studio",
 ]
 
@@ -98,6 +99,9 @@ ADMIN_URL = os.environ.get("DJANGO_ADMIN_URL", "admin/")
 # Live site: nobody may frame our pages. (PDFs are served by PythonAnywhere's static mapping, not by Django.)
 # Local development serves PDFs through Django, so same-origin framing is allowed there.
 X_FRAME_OPTIONS = "SAMEORIGIN" if DEBUG else "DENY"
+
+# Code from Google Search Console ("HTML tag" method). Leave empty until you have it.
+GOOGLE_SITE_VERIFICATION = os.environ.get("GOOGLE_SITE_VERIFICATION", "")
 
 # Site-wide values shown in the footer and on the Contact page.
 # Empty values are hidden automatically. Fill them in here (or via environment variables).
