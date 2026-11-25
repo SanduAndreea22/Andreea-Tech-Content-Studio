@@ -95,8 +95,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Admin URL is configurable, so it is not the guessable default on the live site.
 ADMIN_URL = os.environ.get("DJANGO_ADMIN_URL", "admin/")
 
-# PDFs are shown inside the Portfolio detail page, so same-origin framing is allowed.
-X_FRAME_OPTIONS = "SAMEORIGIN"
+# Live site: nobody may frame our pages. (PDFs are served by PythonAnywhere's static mapping, not by Django.)
+# Local development serves PDFs through Django, so same-origin framing is allowed there.
+X_FRAME_OPTIONS = "SAMEORIGIN" if DEBUG else "DENY"
 
 # Site-wide values shown in the footer and on the Contact page.
 # Empty values are hidden automatically. Fill them in here (or via environment variables).

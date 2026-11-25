@@ -12,7 +12,8 @@ class ContactForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     # Honeypot: hidden from people, filled in by simple bots.
-    website = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    # The name is deliberately not "website", "url" or "phone", which browsers autofill.
+    hp_check = forms.CharField(label="Leave this empty", required=False, widget=forms.TextInput(attrs={
         "tabindex": "-1", "autocomplete": "off", "aria-hidden": "true",
     }))
 
@@ -40,10 +41,12 @@ class ContactForm(forms.ModelForm):
             "message": forms.Textarea(attrs={"rows": 4, "placeholder": "Message"}),
         }
 
-    def clean_website(self):
-        if self.cleaned_data.get("website"):
-            raise forms.ValidationError("Spam detected.")
-        return ""
+    def clean(self):
+        cleaned = super().clean()
+        if cleaned.get("hp_check"):
+            # Visible message, so a real person whose browser filled the hidden field is not left guessing.
+            raise forms.ValidationError("We could not send your request. Please reload the page and try again.")
+        return cleaned
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()

@@ -2,7 +2,14 @@ from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
+import uuid
+
 MAX_PDF_BYTES = 10 * 1024 * 1024
+
+
+def sample_upload_path(instance, filename):
+    """Random file name, so the address of a hidden (unpublished) PDF cannot be guessed."""
+    return f"samples/{uuid.uuid4().hex}.pdf"
 
 
 def validate_pdf(file):
@@ -62,7 +69,7 @@ class SampleProject(models.Model):
         help_text="One short line: who the example business is and what the sample shows.",
     )
     pdf = models.FileField(
-        upload_to="samples/%Y/%m/",
+        upload_to=sample_upload_path,
         validators=[FileExtensionValidator(["pdf"]), validate_pdf],
     )
     is_published = models.BooleanField(default=True, help_text="Untick to hide it from the site.")

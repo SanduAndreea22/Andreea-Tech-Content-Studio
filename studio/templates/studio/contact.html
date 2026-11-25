@@ -15,7 +15,7 @@
       <form method="post" novalidate>
         {% csrf_token %}
         {% if form.non_field_errors %}<div class="errors full" role="alert">{{ form.non_field_errors }}</div>{% endif %}
-        <div class="hp" aria-hidden="true">{{ form.website.label_tag }} {{ form.website }}</div>
+        <div class="hp" aria-hidden="true">{{ form.hp_check.label_tag }} {{ form.hp_check }}</div>
 
         <div class="field">{{ form.name.label_tag }}{{ form.name }}{% for e in form.name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field">{{ form.email.label_tag }}{{ form.email }}{% for e in form.email.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>

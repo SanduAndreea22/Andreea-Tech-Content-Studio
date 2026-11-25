@@ -23,7 +23,7 @@ def valid_post(**overrides):
         "link": "",
         "goal": "More orders",
         "message": "",
-        "website": "",
+        "hp_check": "",
     }
     data.update(overrides)
     return data
@@ -67,8 +67,20 @@ class SiteTests(TestCase):
         self.assertEqual(ContactRequest.objects.count(), 0)
 
     def test_honeypot_blocks_bots(self):
-        self.client.post(reverse("contact"), valid_post(website="http://spam.example"))
+        response = self.client.post(reverse("contact"), valid_post(hp_check="http://spam.example"))
         self.assertEqual(ContactRequest.objects.count(), 0)
+        self.assertContains(response, "Please reload the page and try again")
+
+    def test_uploaded_pdf_gets_random_name(self):
+        sample = self.make_sample(pdf=SimpleUploadedFile("my-secret-draft.pdf", PDF_BYTES))
+        self.assertNotIn("my-secret-draft", sample.pdf.name)
+        self.assertRegex(sample.pdf.name, r"^samples/[0-9a-f]{32}\.pdf$")
+
+    def test_portfolio_detail_shows_pdf(self):
+        sample = self.make_sample()
+        response = self.client.get(reverse("portfolio_detail", args=[sample.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, sample.pdf.url)
 
     def test_same_email_twice_quickly_is_blocked(self):
         self.client.post(reverse("contact"), valid_post())
