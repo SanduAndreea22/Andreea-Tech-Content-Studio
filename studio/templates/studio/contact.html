@@ -1,0 +1,47 @@
+{% extends "studio/base.html" %}
+{% load static %}
+
+{% block title %}Contact | {{ SITE_NAME }}{% endblock %}
+{% block description %}Tell me about your business and get a free sample written for it.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h1 class="sec-title">Tell me about your business. I will write you a free sample.</h1>
+      <p class="lead">The more I know about what you sell and who you sell to, the better the sample. It takes about 3 minutes.</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="errors full" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+        <div class="hp" aria-hidden="true">{{ form.website.label_tag }} {{ form.website }}</div>
+
+        <div class="field">{{ form.name.label_tag }}{{ form.name }}{% for e in form.name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field">{{ form.email.label_tag }}{{ form.email }}{% for e in form.email.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field">{{ form.business_name.label_tag }}{{ form.business_name }}{% for e in form.business_name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field">{{ form.service.label_tag }}{{ form.service }}{% for e in form.service.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.what_you_sell.label_tag }}{{ form.what_you_sell }}{% for e in form.what_you_sell.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.link.label_tag }}{{ form.link }}{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
+        <div class="field full"><button class="btn" type="submit">Send and get my free sample</button></div>
+      </form>
+    </div>
+
+    <aside class="side-card">
+      <img src="{% static 'studio/img/portrait-round.webp' %}" width="280" height="280" alt="Portrait of {{ SITE_NAME }}">
+      <h2>{{ SITE_NAME }}</h2>
+      <p>{{ SITE_TAGLINE }}. I value clear communication, attention to detail and working closely with you.</p>
+      {% if SITE_LINKS %}
+      <ul class="social stack">
+        {% if SITE_LINKS.email %}<li><a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a></li>{% endif %}
+        {% if SITE_LINKS.instagram %}<li><a href="{{ SITE_LINKS.instagram }}" rel="noopener" target="_blank">Instagram</a></li>{% endif %}
+        {% if SITE_LINKS.facebook %}<li><a href="{{ SITE_LINKS.facebook }}" rel="noopener" target="_blank">Facebook</a></li>{% endif %}
+        {% if SITE_LINKS.linkedin %}<li><a href="{{ SITE_LINKS.linkedin }}" rel="noopener" target="_blank">LinkedIn</a></li>{% endif %}
+      </ul>
+      {% endif %}
+    </aside>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "studio/base.html" %}
+
+{% block title %}{{ sample.title }} | {{ SITE_NAME }}{% endblock %}
+{% block description %}{{ sample.description }}{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap">
+    <p class="back"><a href="{% url 'portfolio' %}">← All samples</a></p>
+    <div class="eyebrow">{{ sample.get_category_display }} · Sample project</div>
+    <h1 class="sec-title">{{ sample.title }}</h1>
+    <p class="lead">{{ sample.description }}</p>
+    <div class="btn-row" style="margin:20px 0">
+      <a class="btn sm" href="{{ sample.pdf.url }}" target="_blank" rel="noopener">Open PDF in a new tab</a>
+      <a class="btn sm ghost" href="{% url 'contact' %}">Get your free sample</a>
+    </div>
+    <object class="pdf-view" data="{{ sample.pdf.url }}" type="application/pdf" aria-label="{{ sample.title }} (PDF)">
+      <p class="empty">Your browser cannot show the PDF here. <a href="{{ sample.pdf.url }}" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+    </object>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Services | {{ SITE_NAME }}{% endblock %}
+{% block description %}Advertising copy, social media content and promotional texts for your business.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h1 class="sec-title">What I can write for you</h1>
+    <hr class="rule">
+    <p class="lead">Every text starts with your business, your customers and what you want to achieve. Then I write something clear that gives people a reason to stop and read.</p>
+
+    <div class="service-list">
+      <article class="service-item">
+        <h2>Advertising copy</h2>
+        <p>Promotional copy, advertising concepts, persuasive messages, headlines and calls to action. You get ads that are ready to publish.</p>
+        <p class="meta-line">Available as <a href="{% url 'packages' %}">1 Ad or 3 Ads</a>.</p>
+      </article>
+      <article class="service-item">
+        <h2>Social media content</h2>
+        <p>Instagram post concepts, carousels (posts with several images), captions and Reels scripts. Each post has clear text and a next step for your followers.</p>
+        <p class="meta-line">Available as <a href="{% url 'packages' %}">Starter Posts, Growth Pack or Full Month</a>.</p>
+      </article>
+      <article class="service-item">
+        <h2>Marketing &amp; promotional content</h2>
+        <p>Promotional messages, product and service descriptions, event announcements and sales-focused content.</p>
+        <p class="meta-line">Priced per text. <a href="{% url 'contact' %}?service=texts">Ask for a price</a>.</p>
+      </article>
+      <article class="service-item">
+        <h2>Ads built on your customer's problem</h2>
+        <p>Ads that start from a problem your customer feels, make it clear why it matters, and then show how your offer solves it. This is how I write most ads.</p>
+        <p class="meta-line">Included in every ad package.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pad cta-band">
+  <span class="script">Not sure what you need?</span>
+  <p class="lead center">Tell me about your business and I will write you a free sample. Then we choose together.</p>
+  <a class="btn" href="{% url 'contact' %}">Get your free sample</a>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Packages | {{ SITE_NAME }}{% endblock %}
+{% block description %}Fixed-price packages for ads and social media posts. You know what you get before you start.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap">
+    <div class="eyebrow">Packages</div>
+    <h1 class="sec-title">Fixed prices. You know what you get.</h1>
+    <hr class="rule">
+
+    {% for group in groups %}
+    <div class="group">
+      <h2>{{ group.title }}</h2>
+      <p class="sub">{{ group.intro }}</p>
+      <div class="pack-grid">
+        {% for pack in group.packages %}
+        <article class="pack{% if pack.highlight %} best{% endif %}">
+          <h3>{{ pack.name }}</h3>
+          <div class="price">€{{ pack.price }}</div>
+          <ul>
+            {% for item in pack.features %}<li>{{ item }}</li>{% endfor %}
+          </ul>
+          <a class="btn{% if not pack.highlight %} ghost{% endif %}" href="{% url 'contact' %}?service={% if group.title == 'Ads' %}ads{% else %}posts{% endif %}">Ask for this</a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="note-row">
+      <p><b>Need product or event texts?</b> Descriptions for products, services or events are an extra, with a fixed price per text.</p>
+      <p><b>Not sure what to pick?</b> Ask for a free sample first and I will suggest a package.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

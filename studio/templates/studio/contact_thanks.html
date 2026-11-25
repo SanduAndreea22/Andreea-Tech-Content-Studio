@@ -1,0 +1,15 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Thank you | {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="pad cta-band">
+  <span class="script">Thank you</span>
+  <h1 class="sec-title">Your request is in.</h1>
+  <p class="lead center">I will read about your business and send you a free sample. In the meantime, you can look at my sample projects or the packages.</p>
+  <div class="btn-row">
+    <a class="btn" href="{% url 'portfolio' %}">See sample projects</a>
+    <a class="btn ghost" href="{% url 'packages' %}">See packages</a>
+  </div>
+</section>
+{% endblock %}

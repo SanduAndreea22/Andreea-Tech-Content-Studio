@@ -1,0 +1,37 @@
+{% extends "studio/base.html" %}
+{% load static %}
+
+{% block title %}About | {{ SITE_NAME }}{% endblock %}
+{% block description %}Andreea Sandu is a copywriter and social media content creator who helps businesses communicate their value.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">About</div>
+      <h1 class="sec-title">Hi! I'm Andreea.</h1>
+      <hr class="rule">
+      <p class="lead">I'm a Copywriter &amp; Social Media Content Creator. I help businesses communicate their value through engaging promotional copy and social media content that captures attention, connects with their audience, and encourages action.</p>
+
+      <h2 class="sub-title">What I can help you with</h2>
+      <ul class="plain-list">
+        <li><b>Advertising copy.</b> Promotional copy, advertising concepts, persuasive messages, headlines and calls to action.</li>
+        <li><b>Social media content.</b> Instagram post concepts, carousel content, captions and Reels scripts.</li>
+        <li><b>Marketing &amp; promotional content.</b> Promotional messages, product and service descriptions, event announcements and sales-focused content.</li>
+        <li><b>Ads built on your customer's problem.</b> Ads that start from your customer's problem and lead to your offer.</li>
+      </ul>
+
+      <h2 class="sub-title">My approach</h2>
+      <p>I believe effective communication starts with understanding the audience. Good content doesn't just fill a social media feed. It gives people a reason to stop, pay attention, and connect with a business.</p>
+      <p>I combine creative thinking, copywriting techniques, audience research, and modern AI tools to develop content that is clear, relevant, and aligned with each business's message.</p>
+      <p>Every project starts with understanding your business, your audience, and what you want to communicate. I value clear communication, attention to detail, and thoughtful collaboration.</p>
+    </div>
+    <aside class="side-card">
+      <img src="{% static 'studio/img/portrait-round.webp' %}" width="280" height="280" alt="Portrait of {{ SITE_NAME }}">
+      <span class="script">Let's create content that connects</span>
+      <a class="btn" href="{% url 'contact' %}">Get your free sample</a>
+      <a class="btn ghost" href="{% url 'portfolio' %}">See my samples</a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Portfolio | {{ SITE_NAME }}{% endblock %}
+{% block description %}Sample projects written for example businesses, to show how I work.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap">
+    <div class="eyebrow">Portfolio</div>
+    <h1 class="sec-title">Sample projects</h1>
+    <p class="lead">These samples are written for example businesses, to show how I work. Open a card to read the PDF.</p>
+
+    <nav class="chips" aria-label="Filter by category">
+      <a class="chip{% if not active_category %} on{% endif %}" href="{% url 'portfolio' %}">All</a>
+      {% for value, label in categories %}
+      <a class="chip{% if active_category == value %} on{% endif %}" href="?category={{ value }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+
+    {% if samples %}
+    <div class="grid3">
+      {% for sample in samples %}
+      <a class="sample" href="{% url 'portfolio_detail' sample.pk %}">
+        <div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div>
+        <div class="meta">
+          <div class="kind">{{ sample.get_category_display }}</div>
+          <h3>{{ sample.title }}</h3>
+          <p>{{ sample.description }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">New samples are coming soon. Meanwhile, <a href="{% url 'contact' %}">ask for a free sample written for your business</a>.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
