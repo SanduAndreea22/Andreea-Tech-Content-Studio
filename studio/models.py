@@ -26,7 +26,7 @@ class ContactRequest(models.Model):
     SERVICE_CHOICES = [
         ("ads", "Ads"),
         ("posts", "Social media posts"),
-        ("texts", "Product, service or event texts"),
+        ("texts", "Product, service & event texts"),
         ("unsure", "Not sure yet"),
     ]
     STATUS_CHOICES = [
@@ -41,7 +41,7 @@ class ContactRequest(models.Model):
     service = models.CharField(max_length=10, choices=SERVICE_CHOICES, default="unsure")
     what_you_sell = models.TextField("What they sell, and to whom", max_length=1000)
     link = models.CharField("Instagram, Facebook or website", max_length=300, blank=True)
-    goal = models.CharField("What they want to achieve", max_length=300)
+    goal = models.CharField("What they want to achieve", max_length=300, blank=True)
     message = models.TextField(max_length=2000, blank=True)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default="new", db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)

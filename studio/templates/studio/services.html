@@ -1,7 +1,7 @@
 {% extends "studio/base.html" %}
 
 {% block title %}Services | {{ SITE_NAME }}{% endblock %}
-{% block description %}Advertising copy, social media content and promotional texts for your business.{% endblock %}
+{% block description %}Ads, social media posts and product, service &amp; event texts for your business.{% endblock %}
 
 {% block content %}
 <section class="pad">
@@ -13,24 +13,19 @@
 
     <div class="service-list">
       <article class="service-item">
-        <h2>Advertising copy</h2>
-        <p>Promotional copy, advertising concepts, persuasive messages, headlines and calls to action. You get ads that are ready to publish.</p>
+        <h2>Ads</h2>
+        <p>Promotional copy, advertising concepts, persuasive messages, headlines and calls to action. Each ad starts from a problem your customer feels, then shows how your offer solves it. You get ads that are ready to publish.</p>
         <p class="meta-line">Packages from €{{ ads_from }}. <a href="{% url 'packages' %}">See the ad packages</a></p>
       </article>
       <article class="service-item">
-        <h2>Social media content</h2>
+        <h2>Social media posts</h2>
         <p>Instagram post concepts, carousels (posts with several images), captions and Reels scripts. Each post has clear text and a next step for your followers.</p>
         <p class="meta-line">Packages from €{{ posts_from }}. <a href="{% url 'packages' %}">See the post packages</a></p>
       </article>
       <article class="service-item">
-        <h2>Marketing &amp; promotional content</h2>
-        <p>Promotional messages, product and service descriptions, event announcements and sales-focused content.</p>
+        <h2>Product, service &amp; event texts</h2>
+        <p>Product and service descriptions, event announcements, promotional messages and sales-focused content.</p>
         <p class="meta-line">Fixed price per text. <a href="{% url 'free_sample' %}?service=texts">Ask for the price</a></p>
-      </article>
-      <article class="service-item">
-        <h2>Ads built on your customer's problem</h2>
-        <p>Ads that start from a problem your customer feels, make it clear why it matters, and then show how your offer solves it. This is how I write most ads.</p>
-        <p class="meta-line">Included in every ad package.</p>
       </article>
     </div>
   </div>

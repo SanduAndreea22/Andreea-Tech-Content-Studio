@@ -68,6 +68,38 @@ class SiteTests(TestCase):
                 html = self.client.get(reverse(name)).content.decode()
                 self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), html)
 
+    def test_home_headline_says_what_is_sold(self):
+        html = self.client.get(reverse("home")).content.decode()
+        self.assertIn("<h1>Ads and social media posts written for your business.</h1>", html)
+        self.assertIn("Content that gives people a reason to stop and pay attention.", html)
+        self.assertIn("Three ways I can help", html)
+
+    def test_problem_first_ads_are_not_a_separate_service(self):
+        for name in ["home", "services", "about"]:
+            with self.subTest(page=name):
+                html = self.client.get(reverse(name)).content.decode()
+                self.assertNotIn("Ads built on your customer", html)
+                self.assertIn("starts from a problem your customer feels", html)
+
+    def test_one_name_per_service(self):
+        for name in ["home", "services", "about"]:
+            with self.subTest(page=name):
+                html = self.client.get(reverse(name)).content.decode()
+                self.assertNotIn("Advertising copy", html)
+                self.assertNotIn("Promotional content", html)
+                self.assertNotIn("Marketing &amp; promotional", html)
+                self.assertIn("Product, service &amp; event texts", html)
+
+    def test_two_working_days_is_stated(self):
+        for name in ["home", "free_sample", "free_sample_thanks"]:
+            with self.subTest(page=name):
+                self.assertContains(self.client.get(reverse(name)), "within 2 working days")
+
+    def test_goal_is_optional(self):
+        response = self.client.post(reverse("free_sample"), valid_post(goal=""))
+        self.assertRedirects(response, reverse("free_sample_thanks"))
+        self.assertEqual(ContactRequest.objects.get().goal, "")
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 

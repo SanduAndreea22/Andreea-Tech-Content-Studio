@@ -27,7 +27,7 @@ class ContactForm(forms.ModelForm):
             "service": "What do you need?",
             "what_you_sell": "What do you sell, and to whom?",
             "link": "Instagram, Facebook or website (optional)",
-            "goal": "What do you want to achieve?",
+            "goal": "What do you want to achieve? (optional)",
             "message": "Anything else I should know?",
         }
         widgets = {
