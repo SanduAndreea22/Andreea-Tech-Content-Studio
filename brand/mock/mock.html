@@ -1,0 +1,362 @@
+<title>Andreea Sandu Website Mock</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* Layout: four static screens (Home, Packages, Portfolio, Contact), each in a browser-like frame on a dark stage. */
+:root {
+  --bg: #120D0A;
+  --bg-2: #1D1612;
+  --gold: #D4A55A;
+  --gold-hi: #E8C98A;
+  --text: #F3E9DC;
+  --text-dim: #B8A99A;
+  --orange: #D4541C;
+  --pink: #EBB7C0;
+  --line: rgba(212,165,90,.28);
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --script: "Pinyon Script", "Brush Script MT", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 400 15px/1.65 var(--sans);
+  padding-block: 24px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.12; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.stage { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+
+.intro { padding: 8px 0 0; }
+.intro .label { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+.intro h1 { font-size: clamp(28px, 4vw, 40px); margin-top: 8px; }
+.intro p { color: var(--text-dim); margin-top: 8px; max-width: 62ch; }
+
+.screen-label { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.screen-label b { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.screen-label span { color: var(--text-dim); font-size: 13px; }
+
+.frame { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); overflow: hidden; }
+.chrome { display: flex; gap: 6px; padding: 10px 14px; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.chrome i { width: 9px; height: 9px; border-radius: 50%; background: rgba(243,233,220,.18); }
+
+/* site header */
+.site-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px clamp(16px, 4vw, 40px); border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { width: 54px; height: auto; }
+.brand strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); line-height: 1.1; }
+.brand small { display: block; font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: var(--text-dim); margin-top: 3px; }
+.nav { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); flex-wrap: wrap; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+.nav a { color: var(--text-dim); padding-bottom: 3px; border-bottom: 1px solid transparent; }
+.nav a.on { color: var(--text); border-color: var(--gold); }
+
+.btn { display: inline-block; font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; padding: 14px 22px; border: 1px solid var(--gold); background: var(--gold); color: var(--bg); border-radius: 2px; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--gold); }
+.btn.sm { padding: 11px 16px; }
+
+.pad { padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 40px); }
+.eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: "✦"; font-size: 12px; }
+.rule { width: 64px; height: 1px; background: var(--gold); margin: 18px 0; border: 0; }
+.sec-title { font-size: clamp(30px, 4vw, 44px); }
+
+/* home */
+.hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-bottom: 1px solid var(--line); }
+.hero-copy { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: end; }
+.hero-copy h1 { font-size: clamp(32px, 4.6vw, 54px); }
+.hero-copy .side { display: flex; flex-direction: column; gap: 18px; }
+.hero-copy .side p { color: var(--text-dim); }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.script { font-family: var(--script); color: var(--gold-hi); font-size: clamp(30px, 4vw, 44px); line-height: 1; }
+
+.cards4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 32px; }
+.svc { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.svc .star { color: var(--gold); font-size: 16px; }
+.svc h3 { font-size: 24px; }
+.svc p { color: var(--text-dim); font-size: 14px; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 32px; }
+.step { display: flex; gap: 16px; align-items: flex-start; }
+.ring { flex: none; width: 46px; height: 46px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 22px; color: var(--gold); }
+.step h3 { font-size: 22px; }
+.step p { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+
+.cta-band { background: var(--bg-2); border-top: 1px solid var(--line); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+
+/* packages */
+.group + .group { margin-top: 48px; }
+.group h2 { font-size: clamp(26px, 3.2vw, 34px); }
+.group .sub { color: var(--text-dim); margin-top: 6px; }
+.pack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 22px; }
+.pack { border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pack.best { border-color: var(--gold); }
+.pack .tag { align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--pink); border: 1px solid rgba(235,183,192,.45); padding: 4px 8px; border-radius: 2px; }
+.pack h3 { font-size: 28px; }
+.price { font-family: var(--serif); font-size: 44px; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+.pack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); font-size: 14px; }
+.pack li::before { content: "✦"; color: var(--gold); font-size: 10px; margin-right: 10px; }
+.pack .btn { margin-top: auto; text-align: center; }
+.note-row { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--text-dim); font-size: 14px; }
+.note-row b { color: var(--text); font-weight: 500; }
+
+/* portfolio */
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.chip { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--text-dim); }
+.chip.on { border-color: var(--gold); color: var(--gold); }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 26px; }
+.sample { border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); overflow: hidden; min-width: 0; }
+.thumb { aspect-ratio: 4/3; border-bottom: 1px solid var(--line); background:
+  repeating-linear-gradient(135deg, rgba(212,165,90,.05) 0 10px, transparent 10px 20px), var(--bg);
+  display: grid; place-items: center; position: relative; }
+.thumb .pdf { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 8px 12px; border-radius: 2px; }
+.thumb .badge { position: absolute; top: 10px; left: 10px; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--bg); background: var(--gold); padding: 4px 8px; border-radius: 2px; }
+.sample .meta { padding: 16px 18px 18px; }
+.sample .kind { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.sample h3 { font-size: 22px; margin-top: 4px; }
+.sample p { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+.fine { color: var(--text-dim); font-size: 13px; margin-top: 22px; }
+
+/* contact */
+.contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: start; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-dim); }
+input, select, textarea { font: 400 15px/1.4 var(--sans); color: var(--text); background: var(--bg-2); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; width: 100%; min-width: 0; }
+textarea { min-height: 110px; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 2px; }
+::placeholder { color: rgba(184,169,154,.65); }
+.side-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+.side-card img { width: min(280px, 70%); border-radius: 50%; }
+.side-card p { color: var(--text-dim); }
+.foot { border-top: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 32px 16px; }
+.foot img { width: min(260px, 70%); }
+.foot small { color: var(--text-dim); font-size: 12px; }
+
+@media (max-width: 760px) {
+  .hero-copy, .contact-grid { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .chip { transition: background .2s, color .2s; }
+  .btn:hover { background: var(--gold-hi); color: var(--bg); }
+  .btn.ghost:hover { background: var(--gold); color: var(--bg); }
+}
+</style>
+
+<div class="stage">
+
+  <header class="intro">
+    <div class="label">Mock · static screens</div>
+    <h1>Andreea Sandu, website direction</h1>
+    <p>Four screens in the approved palette and fonts. Texts are in English, as on the real site. Prices are the current package prices. Portfolio cards are placeholders: your sample PDFs go there.</p>
+  </header>
+
+  <!-- ============ 1 HOME ============ -->
+  <section aria-labelledby="s1">
+    <div class="screen-label"><b id="s1">Screen 1</b><span>Home</span></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="site-head">
+        <a class="brand" href="#s1" aria-label="Andreea Sandu, home">
+          <img src="assets/logo-monogram.webp" alt="">
+          <span><strong>Andreea Sandu</strong><small>Copywriter &amp; Social Media Content Creator</small></span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="on" href="#s1">Home</a><a href="#s2">Services</a><a href="#s2">Packages</a><a href="#s3">Portfolio</a><a href="#s4">About</a><a href="#s4">Contact</a>
+          <a class="btn sm" href="#s4">Get your free sample</a>
+        </nav>
+      </div>
+
+      <img class="hero-img" src="assets/hero-photo.webp" alt="Andreea Sandu at her desk with a laptop, a notebook and pink flowers">
+
+      <div class="pad">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Copywriting &amp; social media content</div>
+            <hr class="rule">
+            <h1>Content that gives people a reason to stop and pay attention.</h1>
+          </div>
+          <div class="side">
+            <p>I write ads and social media posts for businesses that want to be noticed, understood and chosen. Tell me about your business and I will write you a free sample first.</p>
+            <div class="btn-row">
+              <a class="btn" href="#s4">Get your free sample</a>
+              <a class="btn ghost" href="#s2">See packages</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pad" style="padding-top:0">
+        <div class="eyebrow">What I do</div>
+        <h2 class="sec-title" style="margin-top:14px">Four ways I can help</h2>
+        <div class="cards4">
+          <article class="svc"><span class="star">✦</span><h3>Advertising copy</h3><p>Promotional copy, headlines and persuasive messages with a clear button to act.</p></article>
+          <article class="svc"><span class="star">✦</span><h3>Social media content</h3><p>Instagram post ideas, carousels (posts with several images), captions and Reels scripts.</p></article>
+          <article class="svc"><span class="star">✦</span><h3>Promotional content</h3><p>Product and service descriptions, event announcements and messages that sell.</p></article>
+          <article class="svc"><span class="star">✦</span><h3>Ads built on your customer's problem</h3><p>Each ad starts from a problem your customer feels, then shows how your offer solves it.</p></article>
+        </div>
+      </div>
+
+      <div class="pad" style="padding-top:0">
+        <div class="eyebrow">How it works</div>
+        <div class="steps">
+          <div class="step"><span class="ring">1</span><div><h3>Tell me about your business</h3><p>Fill in the short form: what you sell, who it is for, what you want to achieve.</p></div></div>
+          <div class="step"><span class="ring">2</span><div><h3>Get a free sample</h3><p>I write a sample for your business and send it to you, so you see my work before you decide.</p></div></div>
+          <div class="step"><span class="ring">3</span><div><h3>Choose a package</h3><p>Fixed price, clear list of what you get. No hourly billing.</p></div></div>
+        </div>
+      </div>
+
+      <div class="pad cta-band">
+        <span class="script">Let's create content that connects</span>
+        <a class="btn" href="#s4">Get your free sample</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 PACKAGES ============ -->
+  <section aria-labelledby="s2">
+    <div class="screen-label"><b id="s2">Screen 2</b><span>Packages</span></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="site-head">
+        <a class="brand" href="#s1"><img src="assets/logo-monogram.webp" alt=""><span><strong>Andreea Sandu</strong><small>Copywriter &amp; Social Media Content Creator</small></span></a>
+        <nav class="nav" aria-label="Main"><a href="#s1">Home</a><a href="#s2">Services</a><a class="on" href="#s2">Packages</a><a href="#s3">Portfolio</a><a href="#s4">About</a><a href="#s4">Contact</a><a class="btn sm" href="#s4">Get your free sample</a></nav>
+      </div>
+
+      <div class="pad">
+        <div class="eyebrow">Packages</div>
+        <h2 class="sec-title" style="margin-top:14px">Fixed prices. You know what you get.</h2>
+        <hr class="rule">
+
+        <div class="group">
+          <h2>Ads</h2>
+          <p class="sub">Ready-to-use ads: headline, text and a button to act.</p>
+          <div class="pack-grid">
+            <article class="pack"><h3>1 Ad</h3><div class="price">€30</div>
+              <ul><li>1 ad written for your business</li><li>3 headline options</li><li>Starts from your customer's problem</li><li>2 rounds of changes</li></ul>
+              <a class="btn ghost" href="#s4">Ask for this</a></article>
+            <article class="pack"><h3>3 Ads</h3><div class="price">€75</div>
+              <ul><li>3 ads, each for a different offer or customer</li><li>Headlines and buttons for each</li><li>2 rounds of changes</li></ul>
+              <a class="btn ghost" href="#s4">Ask for this</a></article>
+          </div>
+        </div>
+
+        <div class="group">
+          <h2>Social media posts</h2>
+          <p class="sub">Posts with text and a clear next step for your followers.</p>
+          <div class="pack-grid">
+            <article class="pack"><h3>Starter Posts</h3><div class="price">€45</div>
+              <ul><li>4 posts for Instagram and Facebook</li><li>Text and call to action for each</li><li>2 rounds of changes</li></ul>
+              <a class="btn ghost" href="#s4">Ask for this</a></article>
+            <article class="pack best"><h3>Growth Pack</h3><div class="price">€110</div>
+              <ul><li>8 posts</li><li>1 carousel (post with several images)</li><li>2 Reels scripts</li><li>2 rounds of changes</li></ul>
+              <a class="btn" href="#s4">Ask for this</a></article>
+            <article class="pack"><h3>Full Month</h3><div class="price">€200</div>
+              <ul><li>12 posts</li><li>2 carousels</li><li>4 Reels scripts</li><li>2 rounds of changes</li></ul>
+              <a class="btn ghost" href="#s4">Ask for this</a></article>
+          </div>
+        </div>
+
+        <div class="note-row">
+          <p><b>Need product or event texts?</b> Descriptions for products, services or events are an extra, with a fixed price per text.</p>
+          <p><b>Not sure what to pick?</b> Ask for a free sample first and I will suggest a package.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 PORTFOLIO ============ -->
+  <section aria-labelledby="s3">
+    <div class="screen-label"><b id="s3">Screen 3</b><span>Portfolio</span></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="site-head">
+        <a class="brand" href="#s1"><img src="assets/logo-monogram.webp" alt=""><span><strong>Andreea Sandu</strong><small>Copywriter &amp; Social Media Content Creator</small></span></a>
+        <nav class="nav" aria-label="Main"><a href="#s1">Home</a><a href="#s2">Services</a><a href="#s2">Packages</a><a class="on" href="#s3">Portfolio</a><a href="#s4">About</a><a href="#s4">Contact</a><a class="btn sm" href="#s4">Get your free sample</a></nav>
+      </div>
+
+      <div class="pad">
+        <div class="eyebrow">Portfolio</div>
+        <h2 class="sec-title" style="margin-top:14px">Sample projects</h2>
+        <p style="color:var(--text-dim);margin-top:10px;max-width:62ch">These samples are written for example businesses, to show how I work. Open a card to read the PDF.</p>
+
+        <div class="chips" role="group" aria-label="Filter">
+          <span class="chip on">All</span><span class="chip">Ads</span><span class="chip">Social posts</span><span class="chip">Carousels</span><span class="chip">Reels scripts</span>
+        </div>
+
+        <div class="grid3">
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Ad</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Social posts</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Carousel</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Reels script</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Ad</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+          <article class="sample"><div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div><div class="meta"><div class="kind">Social posts</div><h3>Sample title</h3><p>Short line about the example business and what the sample shows.</p></div></article>
+        </div>
+        <p class="fine">Placeholders in this mock. On the real site you upload each PDF from your admin panel, with a title, a category and a short description.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 CONTACT ============ -->
+  <section aria-labelledby="s4">
+    <div class="screen-label"><b id="s4">Screen 4</b><span>Contact (free sample request)</span></div>
+    <div class="frame">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="site-head">
+        <a class="brand" href="#s1"><img src="assets/logo-monogram.webp" alt=""><span><strong>Andreea Sandu</strong><small>Copywriter &amp; Social Media Content Creator</small></span></a>
+        <nav class="nav" aria-label="Main"><a href="#s1">Home</a><a href="#s2">Services</a><a href="#s2">Packages</a><a href="#s3">Portfolio</a><a href="#s4">About</a><a class="on" href="#s4">Contact</a></nav>
+      </div>
+
+      <div class="pad">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2 class="sec-title" style="margin-top:14px">Tell me about your business. I will write you a free sample.</h2>
+            <p style="color:var(--text-dim);margin-top:12px;max-width:56ch">The more I know about what you sell and who you sell to, the better the sample. It takes about 3 minutes.</p>
+
+            <form id="contact-form" novalidate>
+              <div class="field"><label for="f-name">Your name</label><input id="f-name" placeholder="Name"></div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@business.com"></div>
+              <div class="field"><label for="f-biz">Business name</label><input id="f-biz" placeholder="Your business"></div>
+              <div class="field"><label for="f-service">What do you need?</label>
+                <select id="f-service"><option>Ads</option><option>Social media posts</option><option>Product, service or event texts</option><option>Not sure yet</option></select></div>
+              <div class="field full"><label for="f-sell">What do you sell, and to whom?</label><input id="f-sell" placeholder="Short description of your business and your customers"></div>
+              <div class="field full"><label for="f-link">Instagram, Facebook or website (optional)</label><input id="f-link" placeholder="Link"></div>
+              <div class="field full"><label for="f-goal">What do you want to achieve?</label><input id="f-goal" placeholder="More messages, more sales, a full event..."></div>
+              <div class="field full"><label for="f-msg">Anything else I should know?</label><textarea id="f-msg" placeholder="Message"></textarea></div>
+              <div class="field full"><button class="btn" type="submit">Send and get my free sample</button><span id="mock-note" class="fine" style="margin-top:8px" role="status">Mock only: this form does not send anything yet.</span></div>
+            </form>
+          </div>
+
+          <aside class="side-card">
+            <img src="assets/portrait-round.webp" alt="Portrait of Andreea Sandu">
+            <h3 style="font-size:28px">Andreea Sandu</h3>
+            <p>Copywriter &amp; Social Media Content Creator. I value clear communication, attention to detail and working closely with you.</p>
+          </aside>
+        </div>
+      </div>
+
+      <div class="foot">
+        <img src="assets/logo.webp" alt="Andreea Sandu, Copywriter and Social Media Content Creator">
+        <small>© 2026 Andreea Sandu</small>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var n = document.getElementById('mock-note');
+  n.textContent = 'This is a mock, so nothing was sent. On the real site this saves your request in the admin panel.';
+});
+</script>

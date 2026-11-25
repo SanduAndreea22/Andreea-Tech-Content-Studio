@@ -48,7 +48,7 @@ Reguli de paleta:
 | `banner-wide.webp` | Banner pentru Contact sau Packages |
 | `logo.webp` | Logo (vezi nota de mai jos) |
 
-Nota despre logo: fisierul are fundal alb cu o umbra gri neclara in jurul literelor, deci arata murdar pe fundalul nostru intunecat. Avem nevoie de logo pe fundal transparent (PNG) sau pe fundal negru. Pana atunci pun in antet textul „Andreea Sandu" in Cormorant Garamond cu auriu si monograma AS refacuta curat, dupa aprobarea ta.
+Nota despre logo: fisierul are fundal transparent (verificat), deci arata curat pe fundalul nostru intunecat. Il folosim direct, fara refacere. Pentru antet am decupat monograma AS in `logo-monogram.webp`; logo-ul complet merge in footer.
 
 ## Reguli de continut
 - Totul in engleza pe site, propozitii simple si concrete.
