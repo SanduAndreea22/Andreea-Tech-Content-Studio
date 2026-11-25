@@ -15,7 +15,15 @@
 
       <form method="post" novalidate>
         {% csrf_token %}
-        {% if form.non_field_errors %}<div class="errors full" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+        {% if form.errors %}
+        <div class="errors-summary" id="form-errors" role="alert" tabindex="-1">
+          {% if form.non_field_errors %}<p><strong>{{ form.non_field_errors.0 }}</strong></p>{% endif %}
+          {% with fields=form.error_fields %}{% if fields %}
+          <p><strong>Please check the fields marked below:</strong></p>
+          <ul>{% for label, field_id in fields %}<li><a href="#{{ field_id }}">{{ label }}</a></li>{% endfor %}</ul>
+          {% endif %}{% endwith %}
+        </div>
+        {% endif %}
         <div class="hp" aria-hidden="true">{{ form.hp_check.label_tag }} {{ form.hp_check }}</div>
 
         <div class="field">{{ form.name.label_tag }}{{ form.name }}{% for e in form.name.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
@@ -46,4 +54,14 @@
     </aside>
   </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // After a failed send, bring the visitor to the summary of what to fix.
+  (function () {
+    var box = document.getElementById('form-errors');
+    if (box) { box.scrollIntoView({ block: 'start', behavior: 'auto' }); box.focus({ preventScroll: true }); }
+  })();
+</script>
 {% endblock %}

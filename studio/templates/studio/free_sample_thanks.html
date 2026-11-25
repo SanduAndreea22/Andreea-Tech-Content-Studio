@@ -16,6 +16,7 @@
     <li>I send you one free ad by email within 2 working days.</li>
     <li>If you like it, we choose a package together.</li>
   </ol>
+  <p class="lead center">{% if SITE_LINKS.email %}I will write to you from {{ SITE_LINKS.email }}. {% endif %}If you do not see my email, check your spam folder.</p>
   <div class="btn-row">
     <a class="btn" href="{% url 'portfolio' %}">See sample projects</a>
     <a class="btn ghost" href="{% url 'packages' %}">See packages</a>

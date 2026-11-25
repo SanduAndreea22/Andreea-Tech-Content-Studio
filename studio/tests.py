@@ -250,6 +250,35 @@ class SiteTests(TestCase):
         self.assertIn('class="form-avatar"', html)
         self.assertIn('class="side-card form-aside"', html)
 
+    def test_empty_form_says_exactly_what_is_missing(self):
+        html = self.client.post(reverse("free_sample"), {}).content.decode()
+        for message in ["Please enter your name.", "Please enter your email.", "Please enter your business name.",
+                        "Please tell me what you sell, and to whom."]:
+            with self.subTest(message=message):
+                self.assertIn(message, html)
+        self.assertNotIn("This field is required", html)
+
+    def test_failed_send_shows_a_summary_with_links_to_the_fields(self):
+        html = self.client.post(reverse("free_sample"), {}).content.decode()
+        self.assertIn('id="form-errors"', html)
+        self.assertIn("Please check the fields marked below:", html)
+        for field_id in ["id_name", "id_email", "id_business_name", "id_what_you_sell"]:
+            self.assertIn('href="#%s"' % field_id, html)
+
+    def test_no_summary_on_a_fresh_form(self):
+        html = self.client.get(reverse("free_sample")).content.decode()
+        self.assertNotIn('id="form-errors"', html)
+
+    def test_bad_email_has_a_plain_message(self):
+        html = self.client.post(reverse("free_sample"), valid_post(email="abc")).content.decode()
+        self.assertIn("Please enter a valid email address.", html)
+        self.assertIn('href="#id_email"', html)
+
+    def test_thank_you_page_says_where_the_email_comes_from(self):
+        html = self.client.get(reverse("free_sample_thanks")).content.decode()
+        self.assertIn("I will write to you from andreea.sandu.copy@gmail.com.", html)
+        self.assertIn("check your spam folder", html)
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 

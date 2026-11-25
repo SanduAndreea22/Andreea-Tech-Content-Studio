@@ -40,10 +40,21 @@ class ContactForm(forms.ModelForm):
             "goal": forms.TextInput(attrs={"placeholder": "Your main goal"}),
             "message": forms.Textarea(attrs={"rows": 4, "placeholder": "Anything else you want me to know"}),
         }
+        error_messages = {
+            "name": {"required": "Please enter your name."},
+            "email": {"required": "Please enter your email.", "invalid": "Please enter a valid email address."},
+            "business_name": {"required": "Please enter your business name."},
+            "service": {"required": "Please choose what you need.", "invalid_choice": "Please choose one of the options."},
+            "what_you_sell": {"required": "Please tell me what you sell, and to whom."},
+        }
         help_texts = {
             "goal": "For example: more messages, more sales, a full event.",
             "link": "One link is enough.",
         }
+
+    def error_fields(self):
+        """(label, field id) for each visible field with a problem, for the summary at the top of the form."""
+        return [(field.label, field.id_for_label) for field in self if field.errors and field.name != "hp_check"]
 
     def clean(self):
         cleaned = super().clean()
