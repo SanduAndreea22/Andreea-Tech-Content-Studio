@@ -45,7 +45,7 @@ class SiteTests(TestCase):
         return SampleProject.objects.create(**defaults)
 
     def test_public_pages_load(self):
-        for name in ["home", "services", "packages", "portfolio", "about", "contact", "contact_thanks"]:
+        for name in ["home", "services", "packages", "portfolio", "about", "contact", "free_sample", "free_sample_thanks"]:
             with self.subTest(page=name):
                 self.assertEqual(self.client.get(reverse(name)).status_code, 200)
 
@@ -56,15 +56,27 @@ class SiteTests(TestCase):
         self.assertNotIn("Instagram</a>", html)
         self.assertNotIn("Facebook</a>", html)
 
+    def test_contact_page_has_no_form_and_links_to_free_sample(self):
+        response = self.client.get(reverse("contact"))
+        self.assertNotContains(response, "<form")
+        self.assertContains(response, reverse("free_sample"))
+        self.assertContains(response, "mailto:andreea.sandu.copy@gmail.com")
+
+    def test_every_get_your_free_sample_button_goes_to_the_form(self):
+        for name in ["home", "services", "about", "packages"]:
+            with self.subTest(page=name):
+                html = self.client.get(reverse(name)).content.decode()
+                self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), html)
+
     def test_contact_page_has_privacy_note(self):
-        self.assertContains(self.client.get(reverse("contact")), "I use your details only to reply")
+        self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 
     def test_package_button_prefills_message(self):
-        response = self.client.get(reverse("contact") + "?service=posts&package=Full%20Month")
+        response = self.client.get(reverse("free_sample") + "?service=posts&package=Full%20Month")
         self.assertContains(response, "I&#x27;m interested in the Full Month package (€200).")
 
     def test_unknown_package_is_ignored(self):
-        response = self.client.get(reverse("contact") + "?package=zzinject")
+        response = self.client.get(reverse("free_sample") + "?package=zzinject")
         self.assertNotContains(response, "zzinject")
 
     def test_packages_page_links_carry_the_package_name(self):
@@ -95,19 +107,19 @@ class SiteTests(TestCase):
             self.assertIn(price, html)
 
     def test_contact_saves_request(self):
-        response = self.client.post(reverse("contact"), valid_post())
-        self.assertRedirects(response, reverse("contact_thanks"))
+        response = self.client.post(reverse("free_sample"), valid_post())
+        self.assertRedirects(response, reverse("free_sample_thanks"))
         saved = ContactRequest.objects.get()
         self.assertEqual(saved.status, "new")
         self.assertEqual(saved.business_name, "Test Bakery")
 
     def test_contact_requires_fields(self):
-        response = self.client.post(reverse("contact"), valid_post(name="", email="not-an-email"))
+        response = self.client.post(reverse("free_sample"), valid_post(name="", email="not-an-email"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ContactRequest.objects.count(), 0)
 
     def test_honeypot_blocks_bots(self):
-        response = self.client.post(reverse("contact"), valid_post(hp_check="http://spam.example"))
+        response = self.client.post(reverse("free_sample"), valid_post(hp_check="http://spam.example"))
         self.assertEqual(ContactRequest.objects.count(), 0)
         self.assertContains(response, "Please reload the page and try again")
 
@@ -123,12 +135,12 @@ class SiteTests(TestCase):
         self.assertContains(response, sample.pdf.url)
 
     def test_same_email_twice_quickly_is_blocked(self):
-        self.client.post(reverse("contact"), valid_post())
-        self.client.post(reverse("contact"), valid_post())
+        self.client.post(reverse("free_sample"), valid_post())
+        self.client.post(reverse("free_sample"), valid_post())
         self.assertEqual(ContactRequest.objects.count(), 1)
 
     def test_service_prefill_ignores_unknown_values(self):
-        response = self.client.get(reverse("contact") + "?service=zzinject")
+        response = self.client.get(reverse("free_sample") + "?service=zzinject")
         self.assertEqual(response.status_code, 200)
         self.assertNotIn("zzinject", response.content.decode())
         self.assertContains(response, '<option value="unsure" selected>')

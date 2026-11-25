@@ -9,6 +9,7 @@ urlpatterns = [
     path("portfolio/", views.portfolio, name="portfolio"),
     path("portfolio/<int:pk>/", views.portfolio_detail, name="portfolio_detail"),
     path("about/", views.about, name="about"),
+    path("free-sample/", views.free_sample, name="free_sample"),
+    path("free-sample/thanks/", views.free_sample_thanks, name="free_sample_thanks"),
     path("contact/", views.contact, name="contact"),
-    path("contact/thanks/", views.contact_thanks, name="contact_thanks"),
 ]

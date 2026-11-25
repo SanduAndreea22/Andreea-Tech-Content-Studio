@@ -163,3 +163,12 @@ textarea { min-height: 96px; resize: vertical; }
   .btn, .chip, .sample { transition: background .2s, color .2s, border-color .2s; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* contact page */
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.contact-list li { display: grid; gap: 2px; overflow-wrap: anywhere; }
+.contact-list span { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-dim); }
+.contact-list a { color: var(--gold); font-size: 17px; }
+.sample-box { margin-top: 40px; padding: 24px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); display: grid; gap: 12px; justify-items: start; }
+.sample-box h2 { font-size: 28px; }
+.sample-box p { color: var(--text-dim); }

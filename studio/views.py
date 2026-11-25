@@ -50,12 +50,12 @@ def about(request):
     return render(request, "studio/about.html")
 
 
-def contact(request):
+def free_sample(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("contact_thanks")
+            return redirect("free_sample_thanks")
     else:
         initial = {}
         service = request.GET.get("service")
@@ -68,8 +68,12 @@ def contact(request):
                 if pack["name"] == chosen:
                     initial["message"] = f"I'm interested in the {pack['name']} package (€{pack['price']})."
         form = ContactForm(initial=initial)
-    return render(request, "studio/contact.html", {"form": form})
+    return render(request, "studio/free_sample.html", {"form": form})
 
 
-def contact_thanks(request):
-    return render(request, "studio/contact_thanks.html")
+def free_sample_thanks(request):
+    return render(request, "studio/free_sample_thanks.html")
+
+
+def contact(request):
+    return render(request, "studio/contact.html")

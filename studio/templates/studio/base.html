@@ -27,9 +27,9 @@
         <a href="{% url 'packages' %}" {% if current == 'packages' %}class="on" aria-current="page"{% endif %}>Packages</a>
         <a href="{% url 'portfolio' %}" {% if current == 'portfolio' or current == 'portfolio_detail' %}class="on" aria-current="page"{% endif %}>Portfolio</a>
         <a href="{% url 'about' %}" {% if current == 'about' %}class="on" aria-current="page"{% endif %}>About</a>
-        <a href="{% url 'contact' %}" {% if current == 'contact' or current == 'contact_thanks' %}class="on" aria-current="page"{% endif %}>Contact</a>
+        <a href="{% url 'contact' %}" {% if current == 'contact' %}class="on" aria-current="page"{% endif %}>Contact</a>
         {% endwith %}
-        <a class="btn sm" href="{% url 'contact' %}">Get your free sample</a>
+        <a class="btn sm" href="{% url 'free_sample' %}">Get your free sample</a>
       </nav>
     </div>
   </header>
