@@ -31,10 +31,10 @@ os.environ["DJANGO_SECRET_KEY"] = "PASTE-THE-KEY-HERE"
 os.environ["DJANGO_ALLOWED_HOSTS"] = "YOURUSER.pythonanywhere.com"
 os.environ["DJANGO_CSRF_TRUSTED_ORIGINS"] = "https://YOURUSER.pythonanywhere.com"
 os.environ["DJANGO_ADMIN_URL"] = "pick-a-secret-word/"   # your admin address, not /admin/
-os.environ["SITE_EMAIL"] = ""        # shown on the site if filled in
-os.environ["SITE_INSTAGRAM"] = ""
-os.environ["SITE_FACEBOOK"] = ""
-os.environ["SITE_LINKEDIN"] = ""
+# Optional. Email and LinkedIn are already set in config/settings.py.
+# Add these lines only to change them or to show Instagram / Facebook (empty means hidden):
+# os.environ["SITE_INSTAGRAM"] = "https://www.instagram.com/..."
+# os.environ["SITE_FACEBOOK"] = "https://www.facebook.com/..."
 ```
 
 The rest of the WSGI file should point to the project:

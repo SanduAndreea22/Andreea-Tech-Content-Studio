@@ -104,10 +104,10 @@ X_FRAME_OPTIONS = "SAMEORIGIN" if DEBUG else "DENY"
 SITE_NAME = "Andreea Sandu"
 SITE_TAGLINE = "Copywriter & Social Media Content Creator"
 SITE_LINKS = {
-    "email": os.environ.get("SITE_EMAIL", ""),
+    "email": os.environ.get("SITE_EMAIL", "andreea.sandu.copy@gmail.com"),
     "instagram": os.environ.get("SITE_INSTAGRAM", ""),
     "facebook": os.environ.get("SITE_FACEBOOK", ""),
-    "linkedin": os.environ.get("SITE_LINKEDIN", ""),
+    "linkedin": os.environ.get("SITE_LINKEDIN", "https://www.linkedin.com/in/andreeasandu22"),
 }
 
 if not DEBUG:

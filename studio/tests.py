@@ -49,6 +49,13 @@ class SiteTests(TestCase):
             with self.subTest(page=name):
                 self.assertEqual(self.client.get(reverse(name)).status_code, 200)
 
+    def test_footer_shows_contact_links_and_hides_empty_ones(self):
+        html = self.client.get(reverse("home")).content.decode()
+        self.assertIn("linkedin.com/in/andreeasandu22", html)
+        self.assertIn("mailto:andreea.sandu.copy@gmail.com", html)
+        self.assertNotIn("Instagram</a>", html)
+        self.assertNotIn("Facebook</a>", html)
+
     def test_packages_show_prices(self):
         html = self.client.get(reverse("packages")).content.decode()
         for price in ["€30", "€75", "€45", "€110", "€200"]:
