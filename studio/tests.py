@@ -118,6 +118,10 @@ class SiteTests(TestCase):
     def test_home_links_to_full_process(self):
         self.assertContains(self.client.get(reverse("home")), "/services/#how-we-work")
 
+    def test_hero_image_alt_describes_the_text_in_the_image(self):
+        html = self.client.get(reverse("home")).content.decode()
+        self.assertIn("Services: social media posts, advertisements (ads)", html)
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 
