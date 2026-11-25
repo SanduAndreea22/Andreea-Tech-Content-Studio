@@ -91,7 +91,7 @@ class SampleProject(models.Model):
         upload_to=sample_cover_path,
         blank=True,
         validators=[FileExtensionValidator(["jpg", "jpeg", "png", "webp"]), validate_cover_size],
-        help_text="Optional picture shown on the card, for example the first page of the PDF. JPG, PNG or WebP, up to 5 MB.",
+        help_text="Optional picture shown on the card, for example the first page of the PDF. JPG, PNG or WebP, up to 5 MB. Best size: 1200 x 900 px (4:3). Other shapes are cropped.",
     )
     is_published = models.BooleanField(default=True, help_text="Untick to hide it from the site.")
     sort_order = models.PositiveIntegerField(default=0, help_text="Lower numbers come first.")

@@ -26,7 +26,7 @@
         <div class="thumb">{% if sample.cover %}<img src="{{ sample.cover.url }}" alt="" loading="lazy">{% else %}<span class="pdf">PDF</span>{% endif %}<span class="badge">Sample project</span></div>
         <div class="meta">
           <div class="kind">{{ sample.get_category_display }}</div>
-          <h3>{{ sample.title }}</h3>
+          <h2>{{ sample.title }}</h2>
           <p>{{ sample.description }}</p>
         </div>
       </a>

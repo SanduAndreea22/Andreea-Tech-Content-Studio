@@ -354,6 +354,20 @@ class SiteTests(TestCase):
         self.assertIn(">See sample projects</a>", html)
         self.assertNotIn("See my samples", html)
 
+    def test_portfolio_card_titles_are_h2_under_the_page_h1(self):
+        self.make_sample(title="Heading check")
+        html = self.client.get(reverse("portfolio")).content.decode()
+        self.assertIn("<h2>Heading check</h2>", html)
+        self.assertNotIn("<h3>", html)
+
+    def test_package_grids_know_their_size(self):
+        html = self.client.get(reverse("packages")).content.decode()
+        self.assertIn('class="pack-grid n2"', html)
+        self.assertIn('class="pack-grid n3"', html)
+
+    def test_cover_hint_tells_the_best_size(self):
+        self.assertIn("1200 x 900", SampleProject._meta.get_field("cover").help_text)
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 

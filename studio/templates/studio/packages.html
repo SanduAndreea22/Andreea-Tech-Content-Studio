@@ -15,7 +15,7 @@
     <div class="group">
       <h2>{{ group.title }}</h2>
       <p class="sub">{{ group.intro }}</p>
-      <div class="pack-grid">
+      <div class="pack-grid n{{ group.packages|length }}">
         {% for pack in group.packages %}
         <article class="pack{% if pack.highlight %} best{% endif %}">
           <h3>{{ pack.name }}</h3>
