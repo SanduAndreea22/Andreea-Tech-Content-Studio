@@ -79,7 +79,7 @@ class SiteTests(TestCase):
     def test_home_headline_says_what_is_sold(self):
         html = self.client.get(reverse("home")).content.decode()
         self.assertIn("<h1>Ads and social media posts written for your business.</h1>", html)
-        self.assertIn("So your customers understand what you offer, and what to do next.", html)
+        self.assertIn("So your customers understand what you offer and what to do next.", html)
         self.assertIn("Three ways I can help", html)
 
     def test_problem_first_ads_are_not_a_separate_service(self):
@@ -112,7 +112,7 @@ class SiteTests(TestCase):
         html = self.client.get(reverse("services")).content.decode()
         self.assertIn('id="how-we-work"', html)
         self.assertIn("You pay upfront. Once you select a package, I'll send you the payment details.", html)
-        self.assertIn("each time takes me up to 2 working days", html)
+        self.assertIn("Each time takes me up to 2 working days", html)
         self.assertIn("The time counts from the day I receive your payment", html)
 
     def test_delivery_days_come_from_one_place(self):
@@ -144,7 +144,7 @@ class SiteTests(TestCase):
 
     def test_hero_says_who_it_is_for(self):
         self.assertContains(self.client.get(reverse("home")),
-                            "Writing ads and posts takes time. If you do not have it, or do not know where to start, I write them for you.")
+                            "Writing ads and posts takes time. If you're short on time, or don't know where to start, I write them for you.")
 
     def _request(self, email, age_days):
         r = ContactRequest.objects.create(name="N", email=email, business_name="B", what_you_sell="x")
@@ -276,7 +276,7 @@ class SiteTests(TestCase):
 
     def test_thank_you_page_says_where_the_email_comes_from(self):
         html = self.client.get(reverse("free_sample_thanks")).content.decode()
-        self.assertIn("I will write to you from andreea.sandu.copy@gmail.com.", html)
+        self.assertIn("I'll write to you from andreea.sandu.copy@gmail.com.", html)
         self.assertIn("check your spam folder", html)
 
     def test_required_fields_are_marked(self):
@@ -310,6 +310,44 @@ class SiteTests(TestCase):
         self.assertIn('id="id_link"', folded)
         self.assertIn('id="id_message"', folded)
         self.assertNotIn('id="id_goal"', folded)
+
+    def test_buttons_and_messages_say_what_really_happens(self):
+        self.assertContains(self.client.get(reverse("free_sample")), "Send my request")
+        self.assertNotContains(self.client.get(reverse("free_sample")), "Send and get my free ad")
+        self.client.post(reverse("free_sample"), valid_post())
+        again = self.client.post(reverse("free_sample"), valid_post()).content.decode()
+        self.assertIn("I already received your request a moment ago, so there is no need to send it again.", again)
+        spam = self.client.post(reverse("free_sample"), valid_post(email="other@example.com", hp_check="x")).content.decode()
+        self.assertIn("Your request could not be sent. Please reload the page and try again.", spam)
+
+    def test_site_speaks_in_first_person_and_with_contractions(self):
+        import re
+        for name in ["home", "services", "packages", "free_sample", "free_sample_thanks", "contact", "privacy", "portfolio"]:
+            html = self.client.get(reverse(name)).content.decode()
+            text = re.sub(r"<[^>]+>", " ", html)
+            with self.subTest(page=name):
+                self.assertIsNone(re.search(r"\bWe\b", text))
+                for stiff in ["do not", "I will ", "does not", "cannot"]:
+                    self.assertNotIn(stiff, text)
+
+    def test_privacy_says_what_the_details_are_used_for(self):
+        self.assertContains(self.client.get(reverse("privacy")), "to write your free ad and, if you choose a package, your texts.")
+
+    def test_ads_have_an_example_of_the_next_step(self):
+        for name in ["home", "services"]:
+            with self.subTest(page=name):
+                self.assertContains(self.client.get(reverse(name)), "for example: call, send a message or visit your shop.")
+
+    def test_contact_page_texts_are_plain(self):
+        html = self.client.get(reverse("contact")).content.decode()
+        self.assertIn("For questions, send me an email and I reply within 2 working days.", html)
+        self.assertIn("Andreea Sandu on LinkedIn", html)
+        self.assertNotIn(">https://www.linkedin.com", html)
+
+    def test_admin_status_uses_the_same_word_as_the_site(self):
+        labels = [label for _, label in ContactRequest.STATUS_CHOICES]
+        self.assertIn("Ad sent", labels)
+        self.assertNotIn("Sample sent", labels)
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")

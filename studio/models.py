@@ -46,7 +46,7 @@ class ContactRequest(models.Model):
     ]
     STATUS_CHOICES = [
         ("new", "New"),
-        ("sample_sent", "Sample sent"),
+        ("sample_sent", "Ad sent"),
         ("replied", "Replied"),
     ]
 

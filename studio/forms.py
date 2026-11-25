@@ -38,7 +38,7 @@ class ContactForm(forms.ModelForm):
                 "rows": 3, "placeholder": "Short description of your business and your customers"}),
             "link": forms.TextInput(attrs={"placeholder": "Link to your Instagram, Facebook or website"}),
             "goal": forms.TextInput(attrs={"placeholder": "Your main goal"}),
-            "message": forms.Textarea(attrs={"rows": 4, "placeholder": "Anything else you want me to know"}),
+            "message": forms.Textarea(attrs={"rows": 4, "placeholder": "For example: a date, a question, a style you like"}),
         }
         error_messages = {
             "name": {"required": "Please enter your name."},
@@ -48,7 +48,7 @@ class ContactForm(forms.ModelForm):
             "what_you_sell": {"required": "Please tell me what you sell, and to whom."},
         }
         help_texts = {
-            "goal": "For example: more messages, more sales, a full event.",
+            "goal": "For example: more messages, more sales, a fully booked event.",
             "link": "One link is enough.",
         }
 
@@ -60,12 +60,12 @@ class ContactForm(forms.ModelForm):
         cleaned = super().clean()
         if cleaned.get("hp_check"):
             # Visible message, so a real person whose browser filled the hidden field is not left guessing.
-            raise forms.ValidationError("We could not send your request. Please reload the page and try again.")
+            raise forms.ValidationError("Your request could not be sent. Please reload the page and try again.")
         return cleaned
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()
         recent = timezone.now() - timedelta(minutes=2)
         if ContactRequest.objects.filter(email__iexact=email, created_at__gte=recent).exists():
-            raise forms.ValidationError("We already got your request. Please wait a couple of minutes before sending another.")
+            raise forms.ValidationError("I already received your request a moment ago, so there is no need to send it again.")
         return email

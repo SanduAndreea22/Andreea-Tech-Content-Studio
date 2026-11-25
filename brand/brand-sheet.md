@@ -77,4 +77,4 @@ Home, Services, Packages, Portfolio (mostre PDF incarcate din admin), About, Con
 
 ## Formular de contact
 Name, email, business name si ce vinde, serviciul dorit (lista: Ads, Social Media Content, Marketing & Promotional Content, Not sure yet), link Instagram/Facebook/site (optional), ce vrea sa obtina, mesaj liber.
-Mesajele se salveaza in panoul admin cu status: new / sample sent / replied. Fara email.
+Mesajele se salveaza in panoul admin cu status: new / ad sent / replied. Fara email.

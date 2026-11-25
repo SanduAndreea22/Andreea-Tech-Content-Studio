@@ -24,7 +24,7 @@ class ContactRequestAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    @admin.action(description="Mark selected as: sample sent")
+    @admin.action(description="Mark selected as: ad sent")
     def mark_sample_sent(self, request, queryset):
         queryset.update(status="sample_sent")
 

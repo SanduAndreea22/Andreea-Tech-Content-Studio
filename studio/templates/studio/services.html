@@ -14,7 +14,7 @@
     <div class="service-list">
       <article class="service-item">
         <h2>Ads</h2>
-        <p>A ready-to-publish ad: headline, text and a clear next step for the reader. Each ad starts from a problem your customer feels, then shows how your offer solves it.</p>
+        <p>A ready-to-publish ad: headline, text and one clear next step for the reader, for example: call, send a message or visit your shop. Each ad starts from a problem your customer feels, then shows how your offer solves it.</p>
         <p class="meta-line">Packages from €{{ ads_from }}. <a href="{% url 'packages' %}">See the ad packages</a></p>
       </article>
       <article class="service-item">
@@ -25,7 +25,7 @@
       <article class="service-item">
         <h2>Product, service &amp; event texts</h2>
         <p>Descriptions of your products and services, and announcements for your events.</p>
-        <p class="meta-line">Fixed price: €{{ text_price }} per text. <a href="{% url 'free_sample' %}?service=texts">Ask about it</a></p>
+        <p class="meta-line">Fixed price: €{{ text_price }} per text. <a href="{% url 'free_sample' %}?service=texts">Ask for your texts</a></p>
       </article>
     </div>
   </div>
@@ -43,7 +43,7 @@
       <li><span class="ring" aria-hidden="true">5</span><div><h3>Send me what I need</h3><p>A short description of your business, who your customers are, the links to your social media, and anything about your style: colors, tone, examples you like. Send it when you pay, so I can start right away.</p></div></li>
       <li><span class="ring" aria-hidden="true">6</span><div><h3>I write</h3><p><b>The time counts from the day I receive your payment.</b></p>
         <ul class="days-list">{% for group in groups %}{% for pack in group.packages %}<li><b>{{ pack.name }}</b> <span>{{ pack.days }} working days</span></li>{% endfor %}{% endfor %}</ul></div></li>
-      <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You get 2 rounds of changes: you send me your changes, I update the text. You can do this twice, and each time takes me up to {{ revision_days }} working days. I send the final texts by email, in a document.</p></div></li>
+      <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You can ask for changes twice: you tell me what to change, and I update the text. Each time takes me up to {{ revision_days }} working days. I send the final texts by email, in a document you can copy the texts from.</p></div></li>
     </ol>
   </div>
 </section>
@@ -62,11 +62,11 @@
       <details><summary>How long does it take?</summary>
         <p>From {{ days_min }} to {{ days_max }} working days, depending on the package. The time counts from the day I receive your payment.</p></details>
       <details><summary>What if I want changes?</summary>
-        <p>You get 2 rounds of changes: you send me your changes, I update the text. Each time takes me up to {{ revision_days }} working days.</p></details>
+        <p>You can ask for changes twice: you tell me what to change, and I update the text. Each time takes me up to {{ revision_days }} working days.</p></details>
       <details><summary>What do you need from me?</summary>
         <p>A short description of your business, who your customers are, the links to your social media, and anything about your style: colors, tone, examples you like.</p></details>
       <details><summary>How do I get the texts?</summary>
-        <p>By email, in a document.</p></details>
+        <p>By email, in a document you can copy the texts from.</p></details>
       <details><summary>What happens with my details?</summary>
         <p>I use them only to reply to your request and write your ad. <a href="{% url 'privacy' %}">Read more</a>.</p></details>
     </div>
@@ -75,7 +75,7 @@
 
 <section class="pad cta-band">
   <span class="script">Not sure what you need?</span>
-  <p class="lead center">Tell me about your business and I will write you one free ad. Then we choose together.</p>
+  <p class="lead center">Tell me about your business and I'll write you one free ad. Then we choose together.</p>
   <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
 </section>
 {% endblock %}

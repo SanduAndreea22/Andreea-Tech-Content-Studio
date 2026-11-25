@@ -11,19 +11,19 @@
       <div class="eyebrow">Contact</div>
       <h1 class="sec-title">Write to me directly.</h1>
       <hr class="rule">
-      <p class="lead">For questions, write here and I reply within 2 working days. For a free ad, use the form below.</p>
+      <p class="lead">For questions, send me an email and I reply within 2 working days. For a free ad, use the form below.</p>
       {% if SITE_LINKS %}
       <ul class="contact-list">
         {% if SITE_LINKS.email %}<li><span>Email</span><a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a></li>{% endif %}
-        {% if SITE_LINKS.linkedin %}<li><span>LinkedIn</span><a href="{{ SITE_LINKS.linkedin }}" rel="noopener" target="_blank">{{ SITE_LINKS.linkedin }}</a></li>{% endif %}
-        {% if SITE_LINKS.instagram %}<li><span>Instagram</span><a href="{{ SITE_LINKS.instagram }}" rel="noopener" target="_blank">{{ SITE_LINKS.instagram }}</a></li>{% endif %}
-        {% if SITE_LINKS.facebook %}<li><span>Facebook</span><a href="{{ SITE_LINKS.facebook }}" rel="noopener" target="_blank">{{ SITE_LINKS.facebook }}</a></li>{% endif %}
+        {% if SITE_LINKS.linkedin %}<li><span>LinkedIn</span><a href="{{ SITE_LINKS.linkedin }}" rel="noopener" target="_blank">{{ SITE_NAME }} on LinkedIn</a></li>{% endif %}
+        {% if SITE_LINKS.instagram %}<li><span>Instagram</span><a href="{{ SITE_LINKS.instagram }}" rel="noopener" target="_blank">{{ SITE_NAME }} on Instagram</a></li>{% endif %}
+        {% if SITE_LINKS.facebook %}<li><span>Facebook</span><a href="{{ SITE_LINKS.facebook }}" rel="noopener" target="_blank">{{ SITE_NAME }} on Facebook</a></li>{% endif %}
       </ul>
       {% endif %}
 
       <div class="sample-box">
         <h2>Want a free ad for your business?</h2>
-        <p>Fill in a short form about your business. It takes about 3 minutes, and I write you one free ad.</p>
+        <p>Fill in a short form. It takes about 3 minutes, and I write you one free ad.</p>
         <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
       </div>
     </div>
