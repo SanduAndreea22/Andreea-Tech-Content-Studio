@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ContactForm
 from .models import SampleProject
-from .packages import PACKAGE_GROUPS, REVISION_DAYS
+from .packages import PACKAGE_GROUPS, REVISION_DAYS, TEXT_PRICE
 
 
 def home(request):
@@ -21,11 +21,12 @@ def services(request):
         "posts_from": _cheapest("Social media posts"),
         "groups": PACKAGE_GROUPS,
         "revision_days": REVISION_DAYS,
+        "text_price": TEXT_PRICE,
     })
 
 
 def packages(request):
-    return render(request, "studio/packages.html", {"groups": PACKAGE_GROUPS})
+    return render(request, "studio/packages.html", {"groups": PACKAGE_GROUPS, "text_price": TEXT_PRICE})
 
 
 def portfolio(request):

@@ -13,10 +13,10 @@
     <p class="hero-name script">{{ SITE_NAME }}</p>
     <hr class="rule">
     <h1>Ads and social media posts written for your business.</h1>
-    <p class="subline">Content that gives people a reason to stop and pay attention.</p>
+    <p class="subline">So your customers understand what you offer, and what to do next.</p>
     <p class="hero-p">Writing ads and posts takes time. If you do not have it, or do not know where to start, I write them for you. Tell me about your business and I will write you one free ad first, so you can see how I work.</p>
     <div class="btn-row">
-      <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
+      <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
       <a class="btn ghost" href="{% url 'packages' %}">See packages</a>
     </div>
   </div>
@@ -27,6 +27,7 @@
   <div class="wrap">
     <div class="eyebrow">What I do</div>
     <h2 class="sec-title">Three ways I can help</h2>
+    <p class="lead">Ads and posts that nobody notices cost you time and bring few customers. Here are the three ways I help you fix that.</p>
     <div class="cards4">
       <article class="svc"><span class="star" aria-hidden="true">✦</span><h3>Ads</h3><p>A ready-to-publish ad: headline, text and a clear next step for the reader. Each ad starts from a problem your customer feels, then shows how your offer solves it.</p></article>
       <article class="svc"><span class="star" aria-hidden="true">✦</span><h3>Social media posts</h3><p>Instagram and Facebook posts, carousels (posts with several images), captions and Reels scripts (scripts for short videos).</p></article>
@@ -41,7 +42,7 @@
     <div class="eyebrow">How it works</div>
     <div class="steps">
       <div class="step"><span class="ring" aria-hidden="true">1</span><div><h3>Tell me about your business</h3><p>Fill in the short form: what you sell and who you sell to.</p></div></div>
-      <div class="step"><span class="ring" aria-hidden="true">2</span><div><h3>Get a free sample</h3><p>I write one short ad for your business and send it by email within 2 working days, so you see my work before you decide.</p></div></div>
+      <div class="step"><span class="ring" aria-hidden="true">2</span><div><h3>Get your free ad</h3><p>I write one short ad for your business and send it by email within 2 working days, so you see my work before you decide.</p></div></div>
       <div class="step"><span class="ring" aria-hidden="true">3</span><div><h3>Choose a package</h3><p>If you like the ad, we choose a package together. The price is fixed, with a clear list of what you get.</p></div></div>
     </div>
   <p class="more"><a href="{% url 'services' %}#how-we-work">See the full process →</a></p>
@@ -49,7 +50,7 @@
 </section>
 
 <section class="pad cta-band">
-  <span class="script">Let's create content that connects</span>
-  <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
+  <span class="script">One free ad for your business</span>
+  <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
 </section>
 {% endblock %}

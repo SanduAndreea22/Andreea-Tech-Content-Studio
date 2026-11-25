@@ -6,6 +6,7 @@ Prices are fixed per package (never per hour), in euro.
 
 REVISIONS = "2 rounds of changes"
 REVISION_DAYS = 2  # working days for each round of changes
+TEXT_PRICE = 15  # fixed price in euro for one product, service or event text
 
 PACKAGE_GROUPS = [
     {
@@ -30,7 +31,7 @@ PACKAGE_GROUPS = [
                 "price": 75,
                 "features": [
                     "3 ads, each for a different offer or customer",
-                    "A headline and a clear next step for each ad",
+                    "3 headline options for each ad",
                     "Each ad starts from your customer's problem",
                     REVISIONS,
                 ],
@@ -54,13 +55,12 @@ PACKAGE_GROUPS = [
                 "highlight": False,
             },
             {
-                "name": "Growth Pack",
+                "name": "Standard Posts",
                 "days": 5,
                 "price": 110,
                 "features": [
-                    "8 posts",
-                    "1 carousel (post with several images)",
-                    "2 Reels scripts",
+                    "8 posts, including 1 carousel (a post with several images)",
+                    "2 Reels scripts (scripts for short videos)",
                     REVISIONS,
                 ],
                 "highlight": True,
@@ -70,9 +70,8 @@ PACKAGE_GROUPS = [
                 "days": 7,
                 "price": 200,
                 "features": [
-                    "12 posts",
-                    "2 carousels",
-                    "4 Reels scripts",
+                    "12 posts, including 2 carousels",
+                    "4 Reels scripts (scripts for short videos)",
                     REVISIONS,
                 ],
                 "highlight": False,

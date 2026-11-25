@@ -3,7 +3,7 @@
 Reguli stabilite de Andreea. Site-ul trebuie sa spuna doar ce se poate sustine. Daca o regula se schimba, se schimba mai intai aici, apoi pe site (`studio/templates/studio/services.html`, `studio/packages.py`).
 
 1. **Plata:** 100% inainte de inceperea lucrului. Dupa ce clientul alege pachetul, Andreea trimite detaliile de plata.
-2. **Termene:** 1 Ad, 3 Ads si Starter Posts: 3 zile lucratoare. Growth Pack: 5 zile lucratoare. Full Month: 7 zile lucratoare. Se calculeaza din momentul platii.
+2. **Termene:** 1 Ad, 3 Ads si Starter Posts: 3 zile lucratoare. Standard Posts (fost Growth Pack): 5 zile lucratoare. Full Month: 7 zile lucratoare. Se calculeaza din momentul platii.
 3. **Revizii:** 2 runde de modificari, maximum 2 zile lucratoare fiecare.
 4. **Brief:** descrierea afacerii, publicul tinta, linkurile sociale si preferintele de brand.
 5. **Livrare:** prin email, intr-un document.
@@ -12,6 +12,12 @@ Reguli stabilite de Andreea. Site-ul trebuie sa spuna doar ce se poate sustine. 
 
 8. **Date personale:** mesajele din formular se pastreaza maximum 12 luni, apoi se sterg. Pagina Privacy de pe site promite asta. Ruleaza la fiecare 6 luni `python manage.py delete_old_requests` (arata cate mesaje sunt vechi), apoi `python manage.py delete_old_requests --yes` ca sa le stearga. Pune-ti un memento in calendar.
 9. **Client tinta:** business-uri care nu stiu cum sa isi faca reclame si postari sau nu au timp.
+
+10. **Nume oferta:** peste tot "free ad" (nu "free sample"). Butoanele spun "Get your free ad".
+11. **Carusele:** sunt incluse in numarul de postari (8 postari inclusiv 1 carusel; 12 postari inclusiv 2 caruse). Reels scripts sunt separate.
+12. **3 Ads:** 3 variante de titlu pentru fiecare reclama.
+13. **Texte de produs, serviciu sau eveniment:** 15 euro pe text, pret fix (se schimba in `studio/packages.py`, `TEXT_PRICE`).
+14. **Email:** raspuns in 2 zile lucratoare.
 
 Formularea din site (engleza): "You pay upfront. Once you select a package, I'll send you the payment details."
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ SITE_NAME }} | {{ SITE_TAGLINE }}{% endblock %}</title>
-  <meta name="description" content="{% block description %}Ads and social media posts for businesses that want to be noticed, understood and chosen. Ask for a free sample.{% endblock %}">
+  <meta name="description" content="{% block description %}Ads and social media posts for businesses that want to be noticed, understood and chosen. Ask for a free ad.{% endblock %}">
   <link rel="icon" type="image/png" href="{% static 'studio/img/favicon.png' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
         <a href="{% url 'about' %}" {% if current == 'about' %}class="on" aria-current="page"{% endif %}>About</a>
         <a href="{% url 'contact' %}" {% if current == 'contact' %}class="on" aria-current="page"{% endif %}>Contact</a>
         {% endwith %}
-        <a class="btn sm" href="{% url 'free_sample' %}">Get your free sample</a>
+        <a class="btn sm" href="{% url 'free_sample' %}">Get your free ad</a>
       </nav>
     </div>
   </header>

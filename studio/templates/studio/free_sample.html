@@ -1,16 +1,16 @@
 {% extends "studio/base.html" %}
 {% load static %}
 
-{% block title %}Get your free sample | {{ SITE_NAME }}{% endblock %}
-{% block description %}Tell me about your business and get a free sample written for it.{% endblock %}
+{% block title %}Get your free ad | {{ SITE_NAME }}{% endblock %}
+{% block description %}Tell me about your business and get a free ad written for it.{% endblock %}
 
 {% block content %}
 <section class="pad">
   <div class="wrap contact-grid">
     <div>
-      <div class="eyebrow">Free sample</div>
-      <h1 class="sec-title">Tell me about your business. I will write you a free sample.</h1>
-      <p class="lead">The free sample is one short ad written for your business. I send it by email within 2 working days. Most useful to me: what you sell, who buys it, and what you want people to do after they see the ad. The form takes about 3 minutes.</p>
+      <div class="eyebrow">Free ad</div>
+      <h1 class="sec-title">Tell me about your business. I will write you a free ad.</h1>
+      <p class="lead">I write you one short ad for your business, for free, and send it by email within 2 working days. Most useful to me: what you sell, who buys it, and what you want people to do after they see the ad. The form takes about 3 minutes.</p>
 
       <form method="post" novalidate>
         {% csrf_token %}
@@ -25,7 +25,7 @@
         <div class="field full">{{ form.link.label_tag }}{{ form.link }}<span class="hint">{{ form.link.help_text }}</span>{% for e in form.link.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}<span class="hint">{{ form.goal.help_text }}</span>{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
-        <div class="field full"><button class="btn" type="submit">Send and get my free sample</button></div>
+        <div class="field full"><button class="btn" type="submit">Send and get my free ad</button></div>
         <p class="privacy full">I use your details only to reply to your request and write your sample. <a href="{% url 'privacy' %}">Privacy</a></p>
       </form>
     </div>

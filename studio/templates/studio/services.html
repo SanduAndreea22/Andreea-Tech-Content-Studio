@@ -25,7 +25,7 @@
       <article class="service-item">
         <h2>Product, service &amp; event texts</h2>
         <p>Descriptions of your products and services, and announcements for your events.</p>
-        <p class="meta-line">Fixed price per text. <a href="{% url 'free_sample' %}?service=texts">Ask for the price</a></p>
+        <p class="meta-line">Fixed price: €{{ text_price }} per text. <a href="{% url 'free_sample' %}?service=texts">Ask about it</a></p>
       </article>
     </div>
   </div>
@@ -51,6 +51,6 @@
 <section class="pad cta-band">
   <span class="script">Not sure what you need?</span>
   <p class="lead center">Tell me about your business and I will write you one free ad. Then we choose together.</p>
-  <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
+  <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
 </section>
 {% endblock %}

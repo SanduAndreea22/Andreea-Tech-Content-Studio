@@ -71,12 +71,12 @@ class SiteTests(TestCase):
         for name in ["home", "services", "about", "packages"]:
             with self.subTest(page=name):
                 html = self.client.get(reverse(name)).content.decode()
-                self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), html)
+                self.assertIn('href="%s">Get your free ad' % reverse("free_sample"), html)
 
     def test_home_headline_says_what_is_sold(self):
         html = self.client.get(reverse("home")).content.decode()
         self.assertIn("<h1>Ads and social media posts written for your business.</h1>", html)
-        self.assertIn("Content that gives people a reason to stop and pay attention.", html)
+        self.assertIn("So your customers understand what you offer, and what to do next.", html)
         self.assertIn("Three ways I can help", html)
 
     def test_problem_first_ads_are_not_a_separate_service(self):
@@ -115,7 +115,7 @@ class SiteTests(TestCase):
     def test_delivery_days_come_from_one_place(self):
         services = self.client.get(reverse("services")).content.decode()
         packages = self.client.get(reverse("packages")).content.decode()
-        for name, days in [("1 Ad", 3), ("3 Ads", 3), ("Starter Posts", 3), ("Growth Pack", 5), ("Full Month", 7)]:
+        for name, days in [("1 Ad", 3), ("3 Ads", 3), ("Starter Posts", 3), ("Standard Posts", 5), ("Full Month", 7)]:
             self.assertIn(f"<b>{name}</b> <span>{days} working days</span>", services)
         self.assertIn("Ready in 7 working days", packages)
         self.assertIn("Ready in 5 working days", packages)
@@ -129,7 +129,7 @@ class SiteTests(TestCase):
         self.assertIn("<h1>Ads and social media posts written for your business.</h1>", hero)
         self.assertIn("Copywriter &amp; Social Media Content Creator", hero)
         self.assertIn("Andreea Sandu", hero)
-        self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), hero)
+        self.assertIn('href="%s">Get your free ad' % reverse("free_sample"), hero)
         self.assertEqual(html.count("<h1"), 1)
 
     def test_privacy_page_and_links(self):
@@ -177,6 +177,25 @@ class SiteTests(TestCase):
 
     def test_packages_say_the_time_counts_after_payment(self):
         self.assertContains(self.client.get(reverse("packages")), "working days after payment")
+
+    def test_one_name_for_the_offer(self):
+        for name in ["home", "services", "packages", "about", "contact", "free_sample", "free_sample_thanks"]:
+            html = self.client.get(reverse(name)).content.decode()
+            with self.subTest(page=name):
+                self.assertNotIn("free sample", html.lower().replace("free-sample", "").replace("free_sample", "").replace("sample project", ""))
+
+    def test_text_price_is_shown_once_in_one_place(self):
+        self.assertContains(self.client.get(reverse("packages")), "They cost €15 per text, a fixed price.")
+        self.assertContains(self.client.get(reverse("services")), "Fixed price: €15 per text.")
+
+    def test_carousels_are_counted_inside_the_posts(self):
+        html = self.client.get(reverse("packages")).content.decode()
+        self.assertIn("8 posts, including 1 carousel", html)
+        self.assertIn("12 posts, including 2 carousels", html)
+        self.assertNotIn("Growth Pack", html)
+
+    def test_contact_states_reply_time(self):
+        self.assertContains(self.client.get(reverse("contact")), "I reply within 2 working days")
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")

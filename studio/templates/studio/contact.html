@@ -11,7 +11,7 @@
       <div class="eyebrow">Contact</div>
       <h1 class="sec-title">Write to me directly.</h1>
       <hr class="rule">
-      <p class="lead">For questions, write here. For a free ad, use the form below.</p>
+      <p class="lead">For questions, write here and I reply within 2 working days. For a free ad, use the form below.</p>
       {% if SITE_LINKS %}
       <ul class="contact-list">
         {% if SITE_LINKS.email %}<li><span>Email</span><a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a></li>{% endif %}
@@ -24,7 +24,7 @@
       <div class="sample-box">
         <h2>Want a free ad for your business?</h2>
         <p>Fill in a short form about your business. It takes about 3 minutes, and I write you one free ad.</p>
-        <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
+        <a class="btn" href="{% url 'free_sample' %}">Get your free ad</a>
       </div>
     </div>
 
