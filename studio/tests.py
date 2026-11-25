@@ -103,9 +103,9 @@ class SiteTests(TestCase):
     def test_services_explains_how_we_work(self):
         html = self.client.get(reverse("services")).content.decode()
         self.assertIn('id="how-we-work"', html)
-        self.assertIn("You pay before I start. After you choose a package, I send you the payment details.", html)
-        self.assertIn("2 rounds of changes, each done within 2 working days", html)
-        self.assertIn("The time starts when I have your payment", html)
+        self.assertIn("You pay upfront. Once you select a package, I'll send you the payment details.", html)
+        self.assertIn("Each round takes up to 2 working days", html)
+        self.assertIn("The time counts from the day I receive your payment", html)
 
     def test_delivery_days_come_from_one_place(self):
         services = self.client.get(reverse("services")).content.decode()
