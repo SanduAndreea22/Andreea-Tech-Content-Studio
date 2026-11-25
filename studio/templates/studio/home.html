@@ -2,23 +2,21 @@
 {% load static %}
 
 {% block content %}
-<img class="hero-img" src="{% static 'studio/img/hero-photo.webp' %}" width="1672" height="941"
-     alt="{{ SITE_NAME }}, {{ SITE_TAGLINE }}, at her desk. Services: social media posts, advertisements (ads), ad copy (texts for ads), and captions and texts for posts.">
-
-<section class="pad">
-  <div class="wrap hero-copy">
-    <div>
-      <div class="eyebrow">Copywriting &amp; social media content</div>
-      <hr class="rule">
-      <h1>Ads and social media posts written for your business.</h1>
-      <p class="subline">Content that gives people a reason to stop and pay attention.</p>
-    </div>
-    <div class="side">
-      <p>I write ads and social media posts for businesses that want to be noticed, understood and chosen. Tell me about your business and I will write you one free ad first, so you can see how I work.</p>
-      <div class="btn-row">
-        <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
-        <a class="btn ghost" href="{% url 'packages' %}">See packages</a>
-      </div>
+<section class="hero">
+  <div class="hero-media">
+    <img src="{% static 'studio/img/hero-person.webp' %}" width="740" height="941"
+         alt="{{ SITE_NAME }} at her desk, smiling at the camera">
+  </div>
+  <div class="hero-text">
+    <p class="hero-tag">{{ SITE_TAGLINE }}</p>
+    <p class="hero-name script">{{ SITE_NAME }}</p>
+    <hr class="rule">
+    <h1>Ads and social media posts written for your business.</h1>
+    <p class="subline">Content that gives people a reason to stop and pay attention.</p>
+    <p class="hero-p">Tell me about your business and I will write you one free ad first, so you can see how I work.</p>
+    <div class="btn-row">
+      <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
+      <a class="btn ghost" href="{% url 'packages' %}">See packages</a>
     </div>
   </div>
 </section>

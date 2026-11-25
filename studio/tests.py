@@ -118,9 +118,14 @@ class SiteTests(TestCase):
     def test_home_links_to_full_process(self):
         self.assertContains(self.client.get(reverse("home")), "/services/#how-we-work")
 
-    def test_hero_image_alt_describes_the_text_in_the_image(self):
+    def test_hero_has_real_text_and_button(self):
         html = self.client.get(reverse("home")).content.decode()
-        self.assertIn("Services: social media posts, advertisements (ads)", html)
+        hero = html.split('<section class="hero">')[1].split("</section>")[0]
+        self.assertIn("<h1>Ads and social media posts written for your business.</h1>", hero)
+        self.assertIn("Copywriter &amp; Social Media Content Creator", hero)
+        self.assertIn("Andreea Sandu", hero)
+        self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), hero)
+        self.assertEqual(html.count("<h1"), 1)
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
