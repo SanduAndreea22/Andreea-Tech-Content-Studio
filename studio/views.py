@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ContactForm
 from .models import SampleProject
-from .packages import PACKAGE_GROUPS
+from .packages import PACKAGE_GROUPS, REVISION_DAYS
 
 
 def home(request):
@@ -19,6 +19,8 @@ def services(request):
     return render(request, "studio/services.html", {
         "ads_from": _cheapest("Ads"),
         "posts_from": _cheapest("Social media posts"),
+        "groups": PACKAGE_GROUPS,
+        "revision_days": REVISION_DAYS,
     })
 
 

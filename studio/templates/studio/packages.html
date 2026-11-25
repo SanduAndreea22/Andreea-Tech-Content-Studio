@@ -19,6 +19,7 @@
         <article class="pack{% if pack.highlight %} best{% endif %}">
           <h3>{{ pack.name }}</h3>
           <div class="price">€{{ pack.price }}</div>
+          <p class="days">Ready in {{ pack.days }} working days</p>
           <ul>
             {% for item in pack.features %}<li>{{ item }}</li>{% endfor %}
           </ul>

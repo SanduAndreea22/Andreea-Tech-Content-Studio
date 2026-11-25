@@ -100,6 +100,24 @@ class SiteTests(TestCase):
         self.assertRedirects(response, reverse("free_sample_thanks"))
         self.assertEqual(ContactRequest.objects.get().goal, "")
 
+    def test_services_explains_how_we_work(self):
+        html = self.client.get(reverse("services")).content.decode()
+        self.assertIn('id="how-we-work"', html)
+        self.assertIn("You pay before I start. After you choose a package, I send you the payment details.", html)
+        self.assertIn("2 rounds of changes, each done within 2 working days", html)
+        self.assertIn("The time starts when I have your payment", html)
+
+    def test_delivery_days_come_from_one_place(self):
+        services = self.client.get(reverse("services")).content.decode()
+        packages = self.client.get(reverse("packages")).content.decode()
+        for name, days in [("1 Ad", 3), ("3 Ads", 3), ("Starter Posts", 3), ("Growth Pack", 5), ("Full Month", 7)]:
+            self.assertIn(f"<b>{name}</b> <span>{days} working days</span>", services)
+        self.assertIn("Ready in 7 working days", packages)
+        self.assertIn("Ready in 5 working days", packages)
+
+    def test_home_links_to_full_process(self):
+        self.assertContains(self.client.get(reverse("home")), "/services/#how-we-work")
+
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")
 

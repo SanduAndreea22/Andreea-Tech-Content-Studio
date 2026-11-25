@@ -174,3 +174,14 @@ textarea { min-height: 96px; resize: vertical; }
 .sample-box p { color: var(--text-dim); }
 
 .subline { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 26px); color: var(--text-dim); margin-top: 14px; line-height: 1.3; font-style: italic; }
+
+/* how we work */
+.how-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 26px; max-width: 70ch; }
+.how-list li { display: flex; gap: 18px; align-items: flex-start; }
+.how-list h3 { font-size: 24px; }
+.how-list p { color: var(--text-dim); margin-top: 4px; }
+.days-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.days-list li { display: flex; gap: 12px; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 6px; max-width: 360px; font-size: 14px; }
+.days-list b { font-weight: 500; }
+.days-list span { color: var(--gold); }
+.days { color: var(--text-dim); font-size: 13px; margin-top: -6px; }

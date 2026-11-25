@@ -31,6 +31,23 @@
   </div>
 </section>
 
+<section class="pad tight" id="how-we-work">
+  <div class="wrap">
+    <div class="eyebrow">How we work</div>
+    <h2 class="sec-title">From your first message to the final texts</h2>
+    <ol class="how-list">
+      <li><span class="ring" aria-hidden="true">1</span><div><h3>Tell me about your business</h3><p>Fill in the short form: what you sell, who it is for and what you want to achieve. It takes about 3 minutes.</p></div></li>
+      <li><span class="ring" aria-hidden="true">2</span><div><h3>Get your free ad</h3><p>I write one short ad for your business and send it by email within 2 working days.</p></div></li>
+      <li><span class="ring" aria-hidden="true">3</span><div><h3>Choose a package</h3><p>If you like the ad, we choose a package together. The price is fixed, never per hour.</p></div></li>
+      <li><span class="ring" aria-hidden="true">4</span><div><h3>Payment</h3><p>You pay before I start. After you choose a package, I send you the payment details.</p></div></li>
+      <li><span class="ring" aria-hidden="true">5</span><div><h3>Send me what I need</h3><p>A short description of your business and your customers, the links to your Instagram or Facebook, and your tone of voice or examples you like.</p></div></li>
+      <li><span class="ring" aria-hidden="true">6</span><div><h3>I write</h3><p>The time starts when I have your payment and the details I need.</p>
+        <ul class="days-list">{% for group in groups %}{% for pack in group.packages %}<li><b>{{ pack.name }}</b> <span>{{ pack.days }} working days</span></li>{% endfor %}{% endfor %}</ul></div></li>
+      <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You get 2 rounds of changes, each done within {{ revision_days }} working days. I send the final texts by email, in a document.</p></div></li>
+    </ol>
+  </div>
+</section>
+
 <section class="pad cta-band">
   <span class="script">Not sure what you need?</span>
   <p class="lead center">Tell me about your business and I will write you one free ad. Then we choose together.</p>
