@@ -187,18 +187,20 @@ textarea { min-height: 96px; resize: vertical; }
 .days { color: var(--text-dim); font-size: 13px; margin-top: -6px; }
 
 /* hero: photo of Andreea fades into the page, real text on the right */
-.hero { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; border-bottom: 1px solid var(--line); background: var(--bg); overflow: hidden; }
+.hero { border-bottom: 1px solid var(--line); background: var(--bg); overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
 .hero-media { line-height: 0; }
 .hero-media img { height: min(76vh, 640px); width: auto; max-width: none; display: block;
-  -webkit-mask-image: linear-gradient(to right, #000 62%, transparent 100%);
-  mask-image: linear-gradient(to right, #000 62%, transparent 100%); }
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 62%, transparent 100%); }
+.hero + .pad { padding-top: clamp(28px, 5vw, 64px); }
 .hero-text { padding: clamp(20px, 4vw, 48px) max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)) clamp(20px, 4vw, 48px) 0; max-width: 640px; }
 .hero-tag { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
 .hero-name { font-size: clamp(46px, 6vw, 76px); margin-top: 6px; }
 .hero-text h1 { font-size: clamp(30px, 3.8vw, 46px); }
 .hero-p { color: var(--text-dim); margin: 16px 0 22px; max-width: 46ch; }
 @media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: 1fr; }
   .hero-media img { width: 100%; height: 170px; object-fit: cover; object-position: 30% 22%;
     -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 62%, transparent 100%); }

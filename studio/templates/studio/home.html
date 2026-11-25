@@ -3,6 +3,7 @@
 
 {% block content %}
 <section class="hero">
+  <div class="wrap hero-inner">
   <div class="hero-media">
     <img src="{% static 'studio/img/hero-person.webp' %}" width="740" height="941"
          alt="{{ SITE_NAME }} at her desk, smiling at the camera">
@@ -18,6 +19,7 @@
       <a class="btn" href="{% url 'free_sample' %}">Get your free sample</a>
       <a class="btn ghost" href="{% url 'packages' %}">See packages</a>
     </div>
+  </div>
   </div>
 </section>
 
