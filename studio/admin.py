@@ -35,7 +35,7 @@ class ContactRequestAdmin(admin.ModelAdmin):
 
 @admin.register(SampleProject)
 class SampleProjectAdmin(admin.ModelAdmin):
-    list_display = ("title", "category", "is_published", "sort_order", "created_at")
+    list_display = ("title", "category", "cover", "is_published", "sort_order", "created_at")
     list_editable = ("is_published", "sort_order")
     list_filter = ("category", "is_published")
     search_fields = ("title", "description")

@@ -31,7 +31,7 @@
   </div>
 </section>
 
-<section class="pad tight" id="how-we-work">
+<section class="pad cream" id="how-we-work">
   <div class="wrap">
     <div class="eyebrow">How we work</div>
     <h2 class="sec-title">From your first message to the final texts</h2>
@@ -45,6 +45,31 @@
         <ul class="days-list">{% for group in groups %}{% for pack in group.packages %}<li><b>{{ pack.name }}</b> <span>{{ pack.days }} working days</span></li>{% endfor %}{% endfor %}</ul></div></li>
       <li><span class="ring" aria-hidden="true">7</span><div><h3>You review, I deliver</h3><p>You get 2 rounds of changes: you send me your changes, I update the text. You can do this twice, and each time takes me up to {{ revision_days }} working days. I send the final texts by email, in a document.</p></div></li>
     </ol>
+  </div>
+</section>
+
+<section class="pad tight" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2 class="sec-title">Good to know</h2>
+    <div class="faq">
+      <details><summary>How much does it cost?</summary>
+        <p>Every package has a fixed price: from €{{ ads_from }} for ads and from €{{ posts_from }} for posts. Product, service &amp; event texts are €{{ text_price }} per text. <a href="{% url 'packages' %}">See all packages</a>.</p></details>
+      <details><summary>Is the free ad really free?</summary>
+        <p>Yes. I write one short ad for your business, for free, and send it by email within 2 working days. If you like it, we choose a package together.</p></details>
+      <details><summary>When do I pay?</summary>
+        <p>You pay upfront. Once you select a package, I'll send you the payment details.</p></details>
+      <details><summary>How long does it take?</summary>
+        <p>From {{ days_min }} to {{ days_max }} working days, depending on the package. The time counts from the day I receive your payment.</p></details>
+      <details><summary>What if I want changes?</summary>
+        <p>You get 2 rounds of changes: you send me your changes, I update the text. Each time takes me up to {{ revision_days }} working days.</p></details>
+      <details><summary>What do you need from me?</summary>
+        <p>A short description of your business, who your customers are, the links to your social media, and anything about your style: colors, tone, examples you like.</p></details>
+      <details><summary>How do I get the texts?</summary>
+        <p>By email, in a document.</p></details>
+      <details><summary>What happens with my details?</summary>
+        <p>I use them only to reply to your request and write your ad. <a href="{% url 'privacy' %}">Read more</a>.</p></details>
+    </div>
   </div>
 </section>
 

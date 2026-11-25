@@ -23,7 +23,7 @@
     <div class="grid3">
       {% for sample in samples %}
       <a class="sample" href="{% url 'portfolio_detail' sample.pk %}">
-        <div class="thumb"><span class="badge">Sample project</span><span class="pdf">PDF</span></div>
+        <div class="thumb">{% if sample.cover %}<img src="{{ sample.cover.url }}" alt="" loading="lazy">{% else %}<span class="pdf">PDF</span>{% endif %}<span class="badge">Sample project</span></div>
         <div class="meta">
           <div class="kind">{{ sample.get_category_display }}</div>
           <h3>{{ sample.title }}</h3>

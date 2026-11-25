@@ -22,6 +22,8 @@ def services(request):
         "groups": PACKAGE_GROUPS,
         "revision_days": REVISION_DAYS,
         "text_price": TEXT_PRICE,
+        "days_min": min(p["days"] for g in PACKAGE_GROUPS for p in g["packages"]),
+        "days_max": max(p["days"] for g in PACKAGE_GROUPS for p in g["packages"]),
     })
 
 

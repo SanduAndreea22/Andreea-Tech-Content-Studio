@@ -220,3 +220,105 @@ textarea { min-height: 96px; resize: vertical; }
 .prose a { color: var(--gold); border-bottom: 1px solid var(--line); }
 
 .back { margin-bottom: 16px; }
+
+/* ---------- polish: gold metal, pink accent, cream band, motion ---------- */
+:root {
+  --cream: #F3E9DC;
+  --ink: #1D1612;
+  --ink-dim: #5A4A3F;
+  --gold-deep: #7A561A;
+  --gold-grad: linear-gradient(135deg, #E8C98A 0%, #D4A55A 45%, #B88A3E 100%);
+  --gold-grad-hover: linear-gradient(135deg, #F1D9A4 0%, #E8C98A 45%, #D4A55A 100%);
+}
+html { accent-color: var(--gold); }
+::selection { background: var(--gold); color: var(--bg); }
+input, textarea { caret-color: var(--gold); }
+input:focus-visible, textarea:focus-visible, select:focus-visible { border-color: var(--gold-hi); outline: 2px solid var(--gold-hi); outline-offset: 2px; }
+
+/* buttons: the gold of the logo */
+.btn { background: var(--gold-grad); }
+.btn:hover { background: var(--gold-grad-hover); }
+
+/* pink: small warm accent taken from the flowers in the photos */
+.days { color: var(--pink); }
+
+/* menu: line slides in under the link */
+.nav a:not(.btn) { border-bottom: 0; position: relative; }
+.nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+.nav a.on::after, .nav a:not(.btn):hover::after, .nav a:not(.btn):focus-visible::after { transform: scaleX(1); }
+
+/* cream band for "How we work" */
+.cream { background: var(--cream); color: var(--ink); }
+.cream .eyebrow { color: var(--gold-deep); }
+.cream .sec-title, .cream .how-list h3, .cream b { color: var(--ink); }
+.cream .how-list p, .cream .days-list li { color: var(--ink-dim); }
+.cream .ring { border-color: var(--gold-deep); color: var(--gold-deep); }
+.cream .days-list li { border-color: rgba(122, 86, 26, .3); }
+.cream .days-list span { color: var(--gold-deep); }
+
+/* FAQ */
+.faq { margin-top: 28px; max-width: 70ch; }
+.faq details { border-top: 1px solid var(--line); padding: 16px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-family: var(--serif); font-size: 22px; line-height: 1.25; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--gold); font-size: 26px; line-height: 1; flex: none; }
+.faq details[open] summary::after { content: "\2013"; }
+.faq p { color: var(--text-dim); margin-top: 10px; }
+.faq a { color: var(--gold); border-bottom: 1px solid var(--line); }
+
+/* sample cards: optional cover picture */
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb .badge { z-index: 1; }
+
+/* thank-you page */
+.ring-draw { width: 96px; height: 96px; }
+.ring-draw circle { fill: none; stroke: var(--gold); stroke-width: 2; }
+.ring-draw path { fill: none; stroke: var(--gold-hi); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.next-steps { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; gap: 12px; text-align: left; counter-reset: next; max-width: 46ch; }
+.next-steps li { counter-increment: next; display: flex; gap: 14px; align-items: center; color: var(--text-dim); }
+.next-steps li::before { content: counter(next); flex: none; width: 32px; height: 32px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 17px; color: var(--gold); }
+
+/* form page: small photo on phones */
+.form-avatar { display: none; }
+
+/* phone: button that follows the visitor */
+.sticky-cta { display: none; }
+
+@media (max-width: 760px) {
+  .form-avatar { display: block; width: 84px; height: 84px; border-radius: 50%; margin-bottom: 14px; }
+  .form-aside { display: none; }
+  .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; visibility: hidden; transform: translateY(110%);
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    background: linear-gradient(to top, var(--bg) 72%, transparent); }
+  .sticky-cta.show { visibility: visible; transform: none; }
+  .sticky-cta .btn { display: block; width: 100%; }
+  .foot { padding-bottom: 104px; }
+}
+
+/* motion: only for visitors who have not asked for less */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(14px); }
+  .js .reveal.in { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+  .nav a:not(.btn)::after { transition: transform .25s ease; }
+  .ring-draw circle { stroke-dasharray: 340; stroke-dashoffset: 340; animation: draw 1s ease forwards; }
+  .ring-draw path { stroke-dasharray: 70; stroke-dashoffset: 70; animation: draw .5s ease .9s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
+  .sticky-cta { transition: transform .3s ease, visibility 0s linear .3s; }
+  .sticky-cta.show { transition: transform .3s ease, visibility 0s; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pack, .sample { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .pack:hover, .sample:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 12px 32px rgba(0, 0, 0, .4); }
+}
+
+/* hero: round portrait with the gold ring, same photo as About and Contact */
+.hero-media img { height: min(64vh, 500px); width: auto; -webkit-mask-image: none; mask-image: none; }
+.hero-text { padding-left: clamp(8px, 2vw, 28px); }
+@media (max-width: 760px) {
+  .hero-media img { width: auto; height: 176px; margin: 14px auto 0; object-fit: contain; -webkit-mask-image: none; mask-image: none; }
+  .hero-text { padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+}
+.cream + .pad.tight { padding-top: clamp(28px, 5vw, 64px); }

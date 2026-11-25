@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
+import os
 import uuid
 
 MAX_PDF_BYTES = 10 * 1024 * 1024
@@ -10,6 +11,20 @@ MAX_PDF_BYTES = 10 * 1024 * 1024
 def sample_upload_path(instance, filename):
     """Random file name, so the address of a hidden (unpublished) PDF cannot be guessed."""
     return f"samples/{uuid.uuid4().hex}.pdf"
+
+
+MAX_COVER_BYTES = 5 * 1024 * 1024
+
+
+def sample_cover_path(instance, filename):
+    """Random file name for the optional cover picture (keeps the picture's own extension)."""
+    extension = os.path.splitext(filename)[1].lower()
+    return f"samples/covers/{uuid.uuid4().hex}{extension}"
+
+
+def validate_cover_size(file):
+    if file.size > MAX_COVER_BYTES:
+        raise ValidationError("The picture must be 5 MB or smaller.")
 
 
 def validate_pdf(file):
@@ -71,6 +86,12 @@ class SampleProject(models.Model):
     pdf = models.FileField(
         upload_to=sample_upload_path,
         validators=[FileExtensionValidator(["pdf"]), validate_pdf],
+    )
+    cover = models.ImageField(
+        upload_to=sample_cover_path,
+        blank=True,
+        validators=[FileExtensionValidator(["jpg", "jpeg", "png", "webp"]), validate_cover_size],
+        help_text="Optional picture shown on the card, for example the first page of the PDF. JPG, PNG or WebP, up to 5 MB.",
     )
     is_published = models.BooleanField(default=True, help_text="Untick to hide it from the site.")
     sort_order = models.PositiveIntegerField(default=0, help_text="Lower numbers come first.")

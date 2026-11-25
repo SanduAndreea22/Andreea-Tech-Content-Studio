@@ -3,10 +3,19 @@
 {% block title %}Thank you | {{ SITE_NAME }}{% endblock %}
 
 {% block content %}
-<section class="pad cta-band">
+<section class="pad cta-band thanks">
+  <svg class="ring-draw" viewBox="0 0 120 120" width="96" height="96" aria-hidden="true" focusable="false">
+    <circle cx="60" cy="60" r="54"></circle>
+    <path d="M38 62l16 16 30-34"></path>
+  </svg>
   <span class="script">Thank you</span>
   <h1 class="sec-title">Your request is in.</h1>
-  <p class="lead center">I will read about your business and send you one free ad by email within 2 working days. If you like it, we choose a package together. In the meantime, you can look at my sample projects or the packages.</p>
+  <p class="lead center">Here is what happens next:</p>
+  <ol class="next-steps">
+    <li>I read about your business.</li>
+    <li>I send you one free ad by email within 2 working days.</li>
+    <li>If you like it, we choose a package together.</li>
+  </ol>
   <div class="btn-row">
     <a class="btn" href="{% url 'portfolio' %}">See sample projects</a>
     <a class="btn ghost" href="{% url 'packages' %}">See packages</a>

@@ -75,7 +75,7 @@ Press **Reload**. The site is at `https://YOURUSER.pythonanywhere.com`.
 
 ## 5. Every day use
 - Messages: `https://YOURUSER.pythonanywhere.com/<your-admin-word>/` → **Messages**. Set the status to New / Sample sent / Replied.
-- Portfolio PDFs: same admin → **Sample projects** → Add (PDF up to 10 MB).
+- Portfolio PDFs: same admin → **Sample projects** → Add (PDF up to 10 MB). You can also add a **Cover** picture (JPG, PNG or WebP, up to 5 MB, for example the first page of the PDF). It is shown on the card.
 - Prices and package lists: edit `studio/packages.py`, then pull and Reload.
 
 ## Deleting old messages (twice a year)
@@ -95,6 +95,7 @@ python manage.py delete_old_requests --yes    # deletes them
 cd ~/Andreea-Tech-Content-Studio
 git pull
 source ~/.virtualenvs/studio/bin/activate
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --noinput
 ```

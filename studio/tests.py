@@ -6,7 +6,10 @@ from datetime import timedelta
 from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.utils import timezone
+import io
 from io import StringIO
+
+from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.exceptions import ValidationError
 from django.test import TestCase, override_settings
@@ -196,6 +199,56 @@ class SiteTests(TestCase):
 
     def test_contact_states_reply_time(self):
         self.assertContains(self.client.get(reverse("contact")), "I reply within 2 working days")
+
+    def test_social_preview_tags_use_an_absolute_image(self):
+        html = self.client.get(reverse("home")).content.decode()
+        self.assertIn('property="og:image" content="http://testserver/static/studio/img/og-image.jpg"', html)
+        self.assertIn('property="og:title"', html)
+        self.assertIn('name="twitter:card" content="summary_large_image"', html)
+
+    def test_sticky_button_is_on_content_pages_but_not_on_the_form_pages(self):
+        for name in ["home", "services", "packages", "portfolio", "about", "contact", "privacy"]:
+            with self.subTest(page=name):
+                self.assertContains(self.client.get(reverse(name)), 'id="sticky-cta"')
+        for name in ["free_sample", "free_sample_thanks"]:
+            with self.subTest(page=name):
+                self.assertNotContains(self.client.get(reverse(name)), 'id="sticky-cta"')
+
+    def test_faq_answers_use_the_real_rules(self):
+        html = self.client.get(reverse("services")).content.decode()
+        self.assertEqual(html.count("<details>"), 8)
+        self.assertIn("From 3 to 7 working days", html)
+        self.assertIn("from €30 for ads and from €45 for posts", html)
+        self.assertIn("€15 per text", html)
+
+    def test_how_we_work_is_the_cream_band(self):
+        self.assertContains(self.client.get(reverse("services")), '<section class="pad cream" id="how-we-work">')
+
+    def test_sample_card_shows_cover_picture_or_pdf_label(self):
+        buf = io.BytesIO(); Image.new("RGB", (8, 8), (212, 165, 90)).save(buf, "PNG")
+        self.make_sample(title="With cover", cover=SimpleUploadedFile("c.png", buf.getvalue(), content_type="image/png"))
+        self.make_sample(title="Without cover", pdf=SimpleUploadedFile("n.pdf", PDF_BYTES, content_type="application/pdf"))
+        html = self.client.get(reverse("portfolio")).content.decode()
+        self.assertRegex(html, r'<img src="/media/samples/covers/[0-9a-f]{32}\.png"')
+        self.assertEqual(html.count('<span class="pdf">PDF</span>'), 1)
+
+    def test_cover_must_be_a_real_picture_type(self):
+        sample = self.make_sample()
+        sample.cover = SimpleUploadedFile("x.svg", b"<svg xmlns='http://www.w3.org/2000/svg'/>", content_type="image/svg+xml")
+        with self.assertRaises(ValidationError):
+            sample.full_clean()
+
+    def test_thank_you_page_shows_what_happens_next(self):
+        html = self.client.get(reverse("free_sample_thanks")).content.decode()
+        self.assertIn('class="ring-draw"', html)
+        steps = html.split('<ol class="next-steps">')[1].split("</ol>")[0]
+        self.assertEqual(steps.count("<li>"), 3)
+        self.assertIn("I send you one free ad by email within 2 working days.", html)
+
+    def test_form_page_has_small_photo_for_phones(self):
+        html = self.client.get(reverse("free_sample")).content.decode()
+        self.assertIn('class="form-avatar"', html)
+        self.assertIn('class="side-card form-aside"', html)
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")

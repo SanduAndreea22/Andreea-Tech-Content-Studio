@@ -3,8 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.className += " js";</script>
   <title>{% block title %}{{ SITE_NAME }} | {{ SITE_TAGLINE }}{% endblock %}</title>
   <meta name="description" content="{% block description %}Ads and social media posts for businesses that want to be noticed, understood and chosen. Ask for a free ad.{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ SITE_NAME }}">
+  <meta property="og:title" content="{{ SITE_NAME }} | {{ SITE_TAGLINE }}">
+  <meta property="og:description" content="Ads and social media posts written for your business. Ask for a free ad.">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'studio/img/og-image.jpg' %}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ SITE_NAME }}, {{ SITE_TAGLINE }}">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="{% static 'studio/img/favicon.png' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,15 +60,52 @@
     <small>&copy; {% now "Y" %} {{ SITE_NAME }} &middot; <a href="{% url 'privacy' %}">Privacy</a></small>
   </footer>
 
+  {% if request.resolver_match.url_name != 'free_sample' and request.resolver_match.url_name != 'free_sample_thanks' %}
+  <div class="sticky-cta" id="sticky-cta"><a class="btn" href="{% url 'free_sample' %}">Get your free ad</a></div>
+  {% endif %}
+
   <script>
     (function () {
       var btn = document.querySelector('.menu-btn');
       var nav = document.getElementById('main-nav');
-      if (!btn || !nav) return;
-      btn.addEventListener('click', function () {
-        var open = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Button that follows the visitor on phones, after the first screen.
+      var bar = document.getElementById('sticky-cta');
+      if (bar) {
+        var onScroll = function () { bar.classList.toggle('show', window.scrollY > 480); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // Cards fade in as they come into view. Skipped when the visitor asked for less motion.
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('IntersectionObserver' in window && !calm) {
+        var items = document.querySelectorAll('.svc, .step, .how-list li, .pack, .sample, .service-item');
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            el.classList.add('in');
+            io.unobserve(el);
+            el.addEventListener('transitionend', function () {
+              el.classList.remove('reveal', 'in');
+              el.style.transitionDelay = '';
+            }, { once: true });
+          });
+        }, { threshold: 0.1 });
+        items.forEach(function (el) {
+          var index = Array.prototype.indexOf.call(el.parentNode.children, el);
+          el.style.transitionDelay = Math.min(index * 70, 280) + 'ms';
+          el.classList.add('reveal');
+          io.observe(el);
+        });
+      }
     })();
   </script>
 </body>
