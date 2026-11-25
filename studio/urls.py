@@ -12,4 +12,5 @@ urlpatterns = [
     path("free-sample/", views.free_sample, name="free_sample"),
     path("free-sample/thanks/", views.free_sample_thanks, name="free_sample_thanks"),
     path("contact/", views.contact, name="contact"),
+    path("privacy/", views.privacy, name="privacy"),
 ]

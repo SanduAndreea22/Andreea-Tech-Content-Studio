@@ -1,0 +1,35 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Privacy | {{ SITE_NAME }}{% endblock %}
+{% block description %}What happens with the details you send through the form.{% endblock %}
+
+{% block content %}
+<section class="pad">
+  <div class="wrap prose">
+    <div class="eyebrow">Privacy</div>
+    <h1 class="sec-title">What I do with your details</h1>
+    <hr class="rule">
+
+    <h2>What I collect</h2>
+    <p>Only what you type in the free sample form: your name, email, business name, what you sell, a link to your social media or website (if you add one), your goal (if you add one) and your message.</p>
+
+    <h2>Why</h2>
+    <p>Only to reply to your request and to write your free ad or your package. I do not use your details for anything else, and I do not sell or share them.</p>
+
+    <h2>Where they are stored</h2>
+    <p>On the server that hosts this website. Only I can see them, from a private admin area.</p>
+
+    <h2>How long I keep them</h2>
+    <p>Up to 12 months after your request, then I delete them. You can ask me to delete them earlier.</p>
+
+    <h2>Cookies and fonts</h2>
+    <ul>
+      <li>This website uses only the technical cookie needed for the form to work. There are no tracking or advertising cookies.</li>
+      <li>The fonts are loaded from Google Fonts, so your browser contacts Google when a page loads.</li>
+    </ul>
+
+    <h2>Your choices</h2>
+    <p>You can ask me to show you, correct or delete your details at any time{% if SITE_LINKS.email %}: write to <a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a>{% endif %}.</p>
+  </div>
+</section>
+{% endblock %}

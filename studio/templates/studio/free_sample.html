@@ -26,7 +26,7 @@
         <div class="field full">{{ form.goal.label_tag }}{{ form.goal }}<span class="hint">{{ form.goal.help_text }}</span>{% for e in form.goal.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full">{{ form.message.label_tag }}{{ form.message }}{% for e in form.message.errors %}<span class="error" role="alert">{{ e }}</span>{% endfor %}</div>
         <div class="field full"><button class="btn" type="submit">Send and get my free sample</button></div>
-        <p class="privacy full">I use your details only to reply to your request and write your sample.</p>
+        <p class="privacy full">I use your details only to reply to your request and write your sample. <a href="{% url 'privacy' %}">Privacy</a></p>
       </form>
     </div>
 

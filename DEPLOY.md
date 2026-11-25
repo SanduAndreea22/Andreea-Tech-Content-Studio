@@ -78,6 +78,14 @@ Press **Reload**. The site is at `https://YOURUSER.pythonanywhere.com`.
 - Portfolio PDFs: same admin → **Sample projects** → Add (PDF up to 10 MB).
 - Prices and package lists: edit `studio/packages.py`, then pull and Reload.
 
+## Deleting old messages (twice a year)
+The Privacy page says messages are kept for up to 12 months. In the Bash console, with the virtualenv active and the secret key exported:
+
+```bash
+python manage.py delete_old_requests          # shows how many are older than 12 months
+python manage.py delete_old_requests --yes    # deletes them
+```
+
 ## 6. Free account reminders
 - Press **Run until 3 months from today** in the Web tab every 3 months, or the site stops.
 - Back up `db.sqlite3` and the `media/` folder from time to time (download them from the Files tab). They hold your messages and PDFs and are not in GitHub.

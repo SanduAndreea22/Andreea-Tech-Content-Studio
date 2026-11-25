@@ -10,6 +10,9 @@ Reguli stabilite de Andreea. Site-ul trebuie sa spuna doar ce se poate sustine. 
 6. **Mostra gratuita:** o reclama scurta, trimisa pe email in 2 zile lucratoare, oricui completeaza formularul.
 7. **Preturi:** fixe pe pachet, niciodata pe ora.
 
+8. **Date personale:** mesajele din formular se pastreaza maximum 12 luni, apoi se sterg. Pagina Privacy de pe site promite asta. Ruleaza la fiecare 6 luni `python manage.py delete_old_requests` (arata cate mesaje sunt vechi), apoi `python manage.py delete_old_requests --yes` ca sa le stearga. Pune-ti un memento in calendar.
+9. **Client tinta:** business-uri care nu stiu cum sa isi faca reclame si postari sau nu au timp.
+
 Formularea din site (engleza): "You pay upfront. Once you select a package, I'll send you the payment details."
 
 Principiu: nu promitem nimic ce nu putem livra.

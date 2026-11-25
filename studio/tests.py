@@ -1,7 +1,12 @@
 import shutil
 import tempfile
 
+from datetime import timedelta
+
 from django.contrib.auth import get_user_model
+from django.core.management import call_command
+from django.utils import timezone
+from io import StringIO
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.exceptions import ValidationError
 from django.test import TestCase, override_settings
@@ -126,6 +131,36 @@ class SiteTests(TestCase):
         self.assertIn("Andreea Sandu", hero)
         self.assertIn('href="%s">Get your free sample' % reverse("free_sample"), hero)
         self.assertEqual(html.count("<h1"), 1)
+
+    def test_privacy_page_and_links(self):
+        response = self.client.get(reverse("privacy"))
+        self.assertContains(response, "Up to 12 months after your request")
+        self.assertContains(response, "mailto:andreea.sandu.copy@gmail.com")
+        self.assertContains(self.client.get(reverse("home")), reverse("privacy"))
+        self.assertContains(self.client.get(reverse("free_sample")), reverse("privacy"))
+
+    def test_hero_says_who_it_is_for(self):
+        self.assertContains(self.client.get(reverse("home")),
+                            "businesses that do not know how to make their own ads and posts, or do not have the time")
+
+    def _request(self, email, age_days):
+        r = ContactRequest.objects.create(name="N", email=email, business_name="B", what_you_sell="x")
+        ContactRequest.objects.filter(pk=r.pk).update(created_at=timezone.now() - timedelta(days=age_days))
+        return r
+
+    def test_delete_old_requests_asks_before_deleting(self):
+        self._request("old@example.com", 400)
+        self._request("new@example.com", 30)
+        out = StringIO()
+        call_command("delete_old_requests", stdout=out)
+        self.assertEqual(ContactRequest.objects.count(), 2)
+        self.assertIn("1 message(s) older than 12 months", out.getvalue())
+
+    def test_delete_old_requests_with_yes_keeps_recent_ones(self):
+        self._request("old@example.com", 400)
+        keep = self._request("new@example.com", 30)
+        call_command("delete_old_requests", "--yes", stdout=StringIO())
+        self.assertEqual(list(ContactRequest.objects.values_list("pk", flat=True)), [keep.pk])
 
     def test_contact_page_has_privacy_note(self):
         self.assertContains(self.client.get(reverse("free_sample")), "I use your details only to reply")

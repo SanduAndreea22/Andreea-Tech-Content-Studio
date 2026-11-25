@@ -46,7 +46,7 @@
       {% if SITE_LINKS.email %}<li><a href="mailto:{{ SITE_LINKS.email }}">{{ SITE_LINKS.email }}</a></li>{% endif %}
     </ul>
     {% endif %}
-    <small>&copy; {% now "Y" %} {{ SITE_NAME }}</small>
+    <small>&copy; {% now "Y" %} {{ SITE_NAME }} &middot; <a href="{% url 'privacy' %}">Privacy</a></small>
   </footer>
 
   <script>

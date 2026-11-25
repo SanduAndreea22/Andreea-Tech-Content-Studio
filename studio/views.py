@@ -79,3 +79,7 @@ def free_sample_thanks(request):
 
 def contact(request):
     return render(request, "studio/contact.html")
+
+
+def privacy(request):
+    return render(request, "studio/privacy.html")
