@@ -56,6 +56,9 @@ class SiteTests(TestCase):
         self.assertNotIn("Instagram</a>", html)
         self.assertNotIn("Facebook</a>", html)
 
+    def test_contact_page_has_privacy_note(self):
+        self.assertContains(self.client.get(reverse("contact")), "I use your details only to reply")
+
     def test_packages_show_prices(self):
         html = self.client.get(reverse("packages")).content.decode()
         for price in ["€30", "€75", "€45", "€110", "€200"]:
